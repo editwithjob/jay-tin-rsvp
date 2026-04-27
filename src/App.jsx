@@ -68,10 +68,10 @@ function HeroSection() {
   return (
     <SectionShell className="text-center">
       <div className="mx-auto flex min-h-[88svh] w-full max-w-[440px] flex-col justify-center">
-        <h1 className="font-serif text-[clamp(2.55rem,9.5vw,3.65rem)] uppercase leading-[1.02] tracking-[-0.045em] text-[#fff7ef]">
+        <h1 className="font-['Times_New_Roman'] text-[clamp(2.7rem,10vw,4rem)] font-normal uppercase leading-[0.98] tracking-[-0.06em] text-[#fff7ef]">
           Some things are
           <br />
-          Meant for you
+          meant for you
         </h1>
 
         <p className="script mt-7 text-[clamp(2rem,8vw,3rem)] leading-none text-[#fff7ef]">
@@ -100,52 +100,58 @@ function TicketSection() {
           <img
             src={ticketImage}
             alt="Jay and Tin wedding invitation ticket"
-            className="w-full drop-shadow-[0_40px_80px_rgba(0,0,0,0.45)]"
+            className="w-full"
           />
 
-          <div className="absolute inset-x-[9%] top-[10%] text-[#6b0f1a]">
+          <div className="absolute inset-x-[9%] top-[10%] text-center text-[#6b0f1a]">
             <p className="text-[clamp(0.72rem,3vw,0.9rem)] font-semibold italic leading-none">
-              we invite you to the wedding of
+              We invite you to the wedding of
             </p>
 
-            <h2 className="script mt-[7%] text-[clamp(4.15rem,16.5vw,5.55rem)] leading-[0.78]">
+            <h2 className="luxury-script mt-[7%] text-[clamp(4rem,15vw,5.3rem)] leading-[0.82] tracking-[-0.04em] text-[#6b0f1a]">
               Jay & Tin
             </h2>
 
-            <div className="mt-[10%] grid grid-cols-2 border-y border-[#7c1725]/75">
-              <div className="flex min-h-[100px] flex-col items-center justify-center border-r border-[#7c1725]/75 py-2">
-                <p className="heading-serif text-[clamp(0.8rem,3.3vw,1rem)] font-bold uppercase leading-none">
-                  May
-                </p>
-                <p className="heading-serif text-[clamp(3.3rem,13.8vw,4.55rem)] font-bold leading-[0.82]">
-                  29
-                </p>
-                <p className="heading-serif text-[clamp(0.8rem,3.3vw,1rem)] font-bold leading-none">
-                  2026
-                </p>
-              </div>
+            <div className="mt-[9%] grid min-h-[112px] grid-cols-2 border-y border-[#7c1725]/75">
+{/* LEFT DATE */}
+<div className="flex flex-col items-center justify-center border-r border-[#7c1725]/75 px-2 text-center">
 
-              <div className="flex min-h-[100px] flex-col items-center justify-center px-2 py-2">
-                <p className="text-[clamp(0.78rem,3.2vw,0.95rem)] font-semibold italic leading-[0.9]">
-                  at 4:30 in the
-                </p>
-                <p className="text-[clamp(0.78rem,3.2vw,0.95rem)] font-semibold italic leading-[0.9]">
-                  afternoon
-                </p>
-                <p className="heading-serif mt-3 text-[clamp(0.68rem,2.65vw,0.86rem)] font-bold uppercase tracking-[0.25em]">
+  <p className="heading-serif m-0 translate-y-[3px] text-[clamp(0.68rem,2.6vw,0.82rem)] font-bold uppercase leading-none">
+    May
+  </p>
+
+<p className="heading-serif m-0 -translate-y-[6px] text-[clamp(3rem,11vw,3.6rem)] font-bold leading-[0.78]">
+  29
+</p>
+
+  <p className="heading-serif m-0 translate-y-[6px] text-[clamp(0.68rem,2.6vw,0.82rem)] font-bold leading-none tracking-[0.08em]">
+    2026
+  </p>
+
+</div>
+
+              {/* RIGHT DETAILS */}
+              <div className="flex flex-col items-center justify-center px-3 text-center">
+                <div className="leading-[0.95]">
+                  <p className="m-0 text-[clamp(0.76rem,2.9vw,0.9rem)] font-semibold italic">
+                    at 4:30 in the
+                  </p>
+
+                  <p className="m-0 text-[clamp(0.76rem,2.9vw,0.9rem)] font-semibold italic">
+                    afternoon
+                  </p>
+                </div>
+
+                <p className="heading-serif m-0 mt-3 text-[clamp(0.62rem,2.35vw,0.78rem)] font-bold uppercase tracking-[0.18em]">
                   Friday
                 </p>
               </div>
             </div>
 
-            <p className="mx-auto mt-[8%] max-w-[245px] text-[clamp(0.82rem,3.35vw,1rem)] font-semibold italic leading-[0.95]">
+            <p className="mx-auto mt-[8%] max-w-[250px] text-[clamp(0.82rem,3.25vw,0.98rem)] font-semibold italic leading-[0.95]">
               Be in the venue at least 30mins before ceremony.
             </p>
           </div>
-        </div>
-
-        <div className="absolute bottom-8 left-1/2 -translate-x-1/2">
-          <ScrollCue label="Venue" />
         </div>
       </div>
     </section>
@@ -182,8 +188,6 @@ function CeremonySection() {
         >
           View Map
         </a>
-
-        <ScrollCue label="Attire" />
       </div>
     </SectionShell>
   )
@@ -229,7 +233,6 @@ function DressCodeSection() {
           Burgundy · Black · Deep Red
         </p>
 
-        <ScrollCue label="Gift" />
       </div>
     </SectionShell>
   )
@@ -262,8 +265,6 @@ function DetailsSection() {
   return (
     <section className="chapter-section relative flex min-h-[100svh] items-center justify-center overflow-hidden bg-[#5f0711] px-0 py-0 text-center">
       <div className="chapter-content relative h-[100svh] w-full overflow-hidden bg-[#5f0711]">
-        <div className="absolute inset-0 z-0 bg-[#5f0711]" />
-
         <img
           src={detailsPaper}
           alt=""
@@ -271,27 +272,27 @@ function DetailsSection() {
           className="absolute inset-0 z-10 h-full w-full object-cover object-center"
         />
 
-        <div className="absolute inset-x-[9%] top-[11%] z-20 text-[#6b0f1a]">
-          <h3 className="heading-serif text-[clamp(2.45rem,10vw,3.55rem)] uppercase tracking-[-0.05em]">
+        <div className="absolute inset-x-[7%] top-[10%] z-20 text-[#6b0f1a]">
+          <h3 className="heading-serif text-[clamp(2.7rem,11vw,3.85rem)] uppercase tracking-[-0.05em]">
             Details
           </h3>
 
-          <div className="mt-[12%] space-y-[9.5%] text-left">
-            <div className="max-w-[58%]">
-              <h4 className="heading-serif text-[clamp(0.92rem,3.7vw,1.15rem)] font-bold uppercase leading-[0.95] tracking-[0.05em]">
+          <div className="mt-[13%] space-y-[8%] text-left">
+            <div className="max-w-[64%]">
+              <h4 className="heading-serif text-[clamp(1rem,4vw,1.25rem)] font-bold uppercase leading-[0.95] tracking-[0.04em]">
                 Can I bring a plus one?
               </h4>
-              <p className="mt-2 text-[clamp(0.64rem,2.5vw,0.8rem)] italic leading-[1.08]">
+              <p className="mt-2 text-[clamp(0.76rem,3vw,0.92rem)] italic leading-[1.05]">
                 Due to limited space at our venue, we can only accommodate those
                 formally invited on the invitation.
               </p>
             </div>
 
-            <div className="ml-auto max-w-[58%] text-right">
-              <h4 className="heading-serif text-[clamp(0.92rem,3.7vw,1.15rem)] font-bold uppercase leading-[0.95] tracking-[0.05em]">
+            <div className="ml-auto max-w-[64%] text-right">
+              <h4 className="heading-serif text-[clamp(1rem,4vw,1.25rem)] font-bold uppercase leading-[0.95] tracking-[0.04em]">
                 Are kids allowed?
               </h4>
-              <p className="mt-2 text-[clamp(0.64rem,2.5vw,0.8rem)] italic leading-[1.08]">
+              <p className="mt-2 text-[clamp(0.76rem,3vw,0.92rem)] italic leading-[1.05]">
                 We love your little ones. However, due to the limited space at
                 our venue, we decided to keep our wedding adults only. We
                 encourage you to use this as a date night to get out and have
@@ -299,11 +300,11 @@ function DetailsSection() {
               </p>
             </div>
 
-            <div className="max-w-[58%]">
-              <h4 className="heading-serif text-[clamp(0.92rem,3.7vw,1.15rem)] font-bold uppercase leading-[0.95] tracking-[0.05em]">
+            <div className="max-w-[64%]">
+              <h4 className="heading-serif text-[clamp(1rem,4vw,1.25rem)] font-bold uppercase leading-[0.95] tracking-[0.04em]">
                 Unplugged Ceremony
               </h4>
-              <p className="mt-2 text-[clamp(0.64rem,2.5vw,0.8rem)] italic leading-[1.08]">
+              <p className="mt-2 text-[clamp(0.76rem,3vw,0.92rem)] italic leading-[1.05]">
                 As we say “I Do,” we ask our beloved guests to put away their
                 phones and cameras, and be fully present in the meaningful
                 moment with us. While our I Do’s are unplugged, our reception is
@@ -311,11 +312,11 @@ function DetailsSection() {
               </p>
             </div>
 
-            <div className="ml-auto max-w-[58%] text-right">
-              <h4 className="heading-serif text-[clamp(0.92rem,3.7vw,1.15rem)] font-bold uppercase leading-[0.95] tracking-[0.05em]">
+            <div className="ml-auto max-w-[64%] text-right">
+              <h4 className="heading-serif text-[clamp(1rem,4vw,1.25rem)] font-bold uppercase leading-[0.95] tracking-[0.04em]">
                 Parking
               </h4>
-              <p className="mt-2 text-[clamp(0.64rem,2.5vw,0.8rem)] italic leading-[1.08]">
+              <p className="mt-2 text-[clamp(0.76rem,3vw,0.92rem)] italic leading-[1.05]">
                 To make your arrival easy, a pay parking building is located
                 right beside Lola’s Cafe.
               </p>
@@ -323,7 +324,7 @@ function DetailsSection() {
           </div>
         </div>
 
-        <div className="absolute bottom-[8%] left-1/2 z-20 -translate-x-1/2">
+        <div className="absolute bottom-[6%] left-1/2 z-20 -translate-x-1/2">
           <p className="text-[9px] uppercase tracking-[0.45em] text-[#d9bd7f]/70">
             RSVP
           </p>
@@ -337,13 +338,16 @@ function DetailsSection() {
 function RSVPSection() {
   const [form, setForm] = useState({
     fullName: '',
+    email: '',
     attendance: 'Attending',
-    guests: '1',
-    guestNames: '',
     message: '',
   })
 
-  const [status, setStatus] = useState({ loading: false, success: '', error: '' })
+  const [status, setStatus] = useState({
+    loading: false,
+    success: '',
+    error: '',
+  })
 
   const updateField = (field, value) => {
     setForm((current) => ({ ...current, [field]: value }))
@@ -354,14 +358,20 @@ function RSVPSection() {
     event.preventDefault()
 
     if (!form.fullName.trim()) {
-      setStatus({ loading: false, success: '', error: 'Please enter your full name.' })
+      setStatus({
+        loading: false,
+        success: '',
+        error: 'Please enter your full name.',
+      })
       return
     }
 
-    const guestCount = Number(form.guests)
-
-    if (guestCount < 0 || guestCount > 2) {
-      setStatus({ loading: false, success: '', error: 'Number of guests must be 0 to 2 only.' })
+    if (!form.email.trim()) {
+      setStatus({
+        loading: false,
+        success: '',
+        error: 'Please enter your email address.',
+      })
       return
     }
 
@@ -370,9 +380,8 @@ function RSVPSection() {
     try {
       const payload = new FormData()
       payload.append('fullName', form.fullName.trim())
+      payload.append('email', form.email.trim())
       payload.append('attendance', form.attendance)
-      payload.append('guests', String(guestCount))
-      payload.append('guestNames', form.guestNames.trim())
       payload.append('message', form.message.trim())
 
       await fetch(GOOGLE_SCRIPT_URL, {
@@ -383,9 +392,8 @@ function RSVPSection() {
 
       setForm({
         fullName: '',
+        email: '',
         attendance: 'Attending',
-        guests: '1',
-        guestNames: '',
         message: '',
       })
 
@@ -415,9 +423,19 @@ function RSVPSection() {
           className="mt-10 rounded-[32px] border border-[#d9bd7f]/25 bg-[#efe2d2] px-6 py-8 text-left text-[#3b0d14] shadow-[0_40px_90px_rgba(0,0,0,0.45)]"
         >
           <input
+            type="text"
             value={form.fullName}
             onChange={(event) => updateField('fullName', event.target.value)}
             placeholder="Full Name"
+            disabled={status.loading}
+            className="mb-4 w-full rounded-xl bg-[#fffaf2] px-4 py-3 text-sm outline-none"
+          />
+
+          <input
+            type="email"
+            value={form.email}
+            onChange={(event) => updateField('email', event.target.value)}
+            placeholder="Email Address"
             disabled={status.loading}
             className="mb-4 w-full rounded-xl bg-[#fffaf2] px-4 py-3 text-sm outline-none"
           />
@@ -439,25 +457,6 @@ function RSVPSection() {
               </button>
             ))}
           </div>
-
-          <select
-            value={form.guests}
-            onChange={(event) => updateField('guests', event.target.value)}
-            disabled={status.loading}
-            className="mb-4 w-full rounded-xl bg-[#fffaf2] px-4 py-3 text-sm outline-none"
-          >
-            <option value="0">0 Guest</option>
-            <option value="1">1 Guest</option>
-            <option value="2">2 Guests</option>
-          </select>
-
-          <input
-            value={form.guestNames}
-            onChange={(event) => updateField('guestNames', event.target.value)}
-            placeholder="Guest Names"
-            disabled={status.loading}
-            className="mb-4 w-full rounded-xl bg-[#fffaf2] px-4 py-3 text-sm outline-none"
-          />
 
           <textarea
             value={form.message}

@@ -174,3 +174,9 @@ body {
       radial-gradient(circle at center, rgba(107, 15, 26, 1), rgba(40, 5, 10, 1));
   }
 }
+
+.luxury-script {
+  font-family: "Cormorant Garamond", "Times New Roman", serif;
+  font-style: italic;
+  font-weight: 300;
+}
