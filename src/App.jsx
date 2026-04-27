@@ -21,7 +21,7 @@ gsap.registerPlugin(ScrollTrigger)
 
 const GOOGLE_MAPS_LINK = 'https://maps.app.goo.gl/zfppua56pNU7nuwG6?g_st=ic'
 const GOOGLE_SCRIPT_URL =
-  'https://script.google.com/macros/s/AKfycbzpOPut6-OtwUfla5d82PkRMzWWruwC89ywZCC0ABcI9zj_nVEkinFEV9EoMMbOLP4/exec'
+  'https://script.google.com/macros/s/AKfycbynDN3bH-QNx6-ve6tErtnxXMwqdecezWJnSEy9Wkz1TUGfkfb0nSMIlHAe-T1d_qE/exec'
 
 const tornVariants = {
   soft: tornSoft,
@@ -219,11 +219,12 @@ function DressCodeSection() {
           Strictly Formal
         </p>
 
-        <p className="mx-auto mt-10 max-w-[330px] text-[15px] italic leading-8 text-[#fff7ef]/90">
-          We would love for our guests to join in our wedding palette by wearing
-          Black or Wine Red attire, helping create a timeless and cohesive
-          celebration.
-        </p>
+<p className="mx-auto mt-10 max-w-[340px] text-[15px] italic leading-[1.7] text-[#fff7ef]/90 text-center">
+  We would love for our guests<br />
+  to join in our wedding palette by wearing<br />
+  <span className="font-semibold not-italic">Black</span> or <span className="font-semibold not-italic">Wine Red</span> attire,<br />
+  helping create a timeless and cohesive celebration.
+</p>
 
         <p className="script mt-8 text-[clamp(2rem,8vw,3rem)] text-[#d9bd7f]">
           Dress Elegantly!
@@ -251,16 +252,16 @@ function GiftGuideSection() {
           Gift Guide
         </h3>
 
-        <p className="mx-auto mt-9 max-w-[320px] text-[15px] italic leading-8 text-[#fff7ef]/90">
-          We are so blessed to have you share in our special day. Should you wish
-          to bless us further, a monetary gift would be much more appreciated.
-        </p>
+<p className="mx-auto mt-10 max-w-[340px] text-[15px] italic leading-[1.7] text-[#fff7ef]/90 text-center">
+  With all the blessings that God poured out on us<br />
+  we cannot ask for more. Your presence and<br />
+  prayers are all we request. But if you desire to<br />
+  bless us, monetary gifts are what we suggest.
+</p>
 
         <div className="mx-auto mt-12 inline-block rounded-2xl bg-[#efe2d2] p-5 shadow-[0_40px_85px_rgba(0,0,0,0.42)]">
           <img src={gcashQR} alt="Gift QR code" className="w-[260px] max-w-[72vw]" />
         </div>
-
-        <ScrollCue label="Details" />
       </div>
     </SectionShell>
   )
@@ -380,40 +381,42 @@ function RSVPSection() {
       return
     }
 
-    setStatus({ loading: true, success: '', error: '' })
+setStatus({ loading: true, success: '', error: '' })
 
-    try {
-      const payload = new FormData()
-      payload.append('fullName', form.fullName.trim())
-      payload.append('email', form.email.trim())
-      payload.append('attendance', form.attendance)
-      payload.append('message', form.message.trim())
+try {
+  const payload = new FormData()
+  payload.append('fullName', form.fullName.trim())
+  payload.append('email', form.email.trim())
+  payload.append('attendance', form.attendance)
+  payload.append('message', form.message.trim())
 
-      await fetch(GOOGLE_SCRIPT_URL, {
-        method: 'POST',
-        mode: 'no-cors',
-        body: payload,
-      })
+  await fetch(GOOGLE_SCRIPT_URL, {
+    method: 'POST',
+    mode: 'no-cors',
+    body: payload,
+  })
 
-      setForm({
-        fullName: '',
-        email: '',
-        attendance: 'Attending',
-        message: '',
-      })
+  setForm({
+    fullName: '',
+    email: '',
+    attendance: 'Attending',
+    message: '',
+  })
 
-      setStatus({
-        loading: false,
-        success: 'Thank you. Your RSVP has been beautifully received.',
-        error: '',
-      })
-    } catch {
-      setStatus({
-        loading: false,
-        success: '',
-        error: 'Something went wrong. Please try submitting again.',
-      })
-    }
+  setStatus({
+    loading: false,
+    success: 'Thank you. Your RSVP has been beautifully received.',
+    error: '',
+  })
+} catch (error) {
+  console.error('RSVP submit error:', error)
+
+  setStatus({
+    loading: false,
+    success: '',
+    error: 'Something went wrong. Please try submitting again.',
+  })
+}
   }
 
   return (
