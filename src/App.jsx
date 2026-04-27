@@ -110,17 +110,11 @@ function TicketSection() {
             className="w-full"
           />
 
-          {/* REVISED CONTAINER: 
-              Using 'justify-center' and a 'gap-y-[10%]' instead of 
-              'justify-between' to pull everything closer together 
-              and center it on the ticket.
-          */}
           <div className="absolute inset-x-[9%] top-[10%] bottom-[11%] flex flex-col justify-center gap-y-[10%] text-center text-[#6b0f1a]">
             
             {/* TOP GROUP: Names and Intro */}
-            {/* REVISED: Reduced top margin from 18% to 12% for better centering */}
             <div className="mt-[12%]">
-              <p className="text-[clamp(0.8rem,3.8vw,1.1rem)] font-semibold italic leading-none">
+              <p className="text-[clamp(0.85rem,3.6vw,1.1rem)] font-light italic leading-none">
                 We invite you to the wedding of
               </p>
 
@@ -135,7 +129,8 @@ function TicketSection() {
                 <p className="heading-serif m-0 translate-y-[3px] text-[clamp(0.8rem,3.5vw,1rem)] font-bold uppercase leading-none">
                   May
                 </p>
-                <p className="heading-serif m-0 -translate-y-[6px] text-[clamp(3.8rem,14vw,5.5rem)] font-bold leading-[0.78]">
+                {/* UPDATED: Downscaled '29' from 5.5rem max to 4.2rem */}
+                <p className="heading-serif m-0 -translate-y-[6px] text-[clamp(3.5rem,12vw,4.2rem)] font-bold leading-[0.78]">
                   29
                 </p>
                 <p className="heading-serif m-0 translate-y-[6px] text-[clamp(0.8rem,3.5vw,1rem)] font-bold leading-none tracking-[0.08em]">
@@ -144,7 +139,7 @@ function TicketSection() {
               </div>
 
               <div className="flex flex-col items-center justify-center px-3 text-center">
-                <div className="leading-[0.95]">
+                <div className="leading-normal">
                   <p className="m-0 text-[clamp(0.9rem,4vw,1.15rem)] font-semibold italic">
                     at 4:30 in the
                   </p>
@@ -158,8 +153,8 @@ function TicketSection() {
               </div>
             </div>
 
-            {/* BOTTOM GROUP: Reminder text scaled up */}
-            <p className="mx-auto max-w-[340px] text-[clamp(1rem,4.5vw,1.35rem)] font-semibold italic leading-tight">
+            {/* BOTTOM GROUP: Reminder text */}
+            <p className="mx-auto max-w-[340px] text-[clamp(1rem,4.5vw,1.35rem)] font-light italic leading-tight">
               Be in the venue at least 30mins before ceremony.
             </p>
           </div>
@@ -168,6 +163,7 @@ function TicketSection() {
     </section>
   )
 }
+
 
 function CountdownSection() {
   const [timeLeft, setTimeLeft] = useState({
