@@ -113,8 +113,8 @@ function TicketSection() {
           <div className="absolute inset-x-[9%] top-[10%] bottom-[11%] flex flex-col justify-center gap-y-[10%] text-center text-[#6b0f1a]">
             
             {/* TOP GROUP: Names and Intro */}
-            <div className="mt-[12%]">
-              {/* Reference Font Size: clamp(0.85rem, 3.6vw, 1.1rem) */}
+            {/* REVISED: Adjusted mt-[12%] to mt-[10%] to bring the text up a very little bit */}
+            <div className="mt-[2%]">
               <p className="text-[clamp(0.85rem,3.6vw,1.1rem)] font-light italic leading-none">
                 We invite you to the wedding of
               </p>
@@ -153,13 +153,11 @@ function TicketSection() {
               </div>
             </div>
 
-            {/* BOTTOM GROUP: Reminder text 
-                UPDATED: Matched font size/weight to the top text and updated wording.
-            */}
+            {/* BOTTOM GROUP: Reminder text */}
             <p className="mx-auto max-w-[340px] text-[clamp(0.85rem,3.6vw,1.1rem)] font-light italic leading-tight">
-              Be in the venue at least 
+              Be in the venue 
               <br />
-              30 minutes before ceremony.
+              at least 30 minutes before ceremony.
             </p>
           </div>
         </div>
