@@ -458,7 +458,7 @@ function DetailsSection() {
                 ref={addToRefs} 
                 className="pt-6 text-center opacity-0 transition-opacity duration-1000 ease-out"
               >
-                <p className="script text-[clamp(3.2rem,12vw,4.5rem)] leading-none text-[#d9bd7f]">
+                <p className="script text-[clamp(3.2rem,12vw,4.5rem)] leading-none text-[#6b0f1a]">
                   Counting the Days
                 </p>
                 
@@ -501,13 +501,6 @@ function DetailsSection() {
 
             </div>
           </div>
-        </div>
-
-        <div className="pointer-events-none absolute bottom-[4%] left-1/2 z-30 -translate-x-1/2 bg-white/0">
-          <p className="text-[9px] uppercase tracking-[0.45em] text-[#6b0f1a]/50">
-            RSVP
-          </p>
-          <div className="mx-auto mt-2 h-6 w-px bg-gradient-to-b from-[#6b0f1a]/50 to-transparent" />
         </div>
       </div>
     </section>
