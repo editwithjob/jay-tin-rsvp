@@ -100,11 +100,9 @@ function HeroSection() {
 
 function TicketSection() {
   return (
-    // Pushed right up under the hero section, no horizontal padding
     <section className="chapter-section relative flex items-center justify-center overflow-hidden px-0 pb-20 pt-8 text-center">
       <div className="chapter-content relative z-10 flex w-full items-center justify-center">
         
-        {/* MAXIMUM SIZE: Full width of the container (up to 520px), zero margins, zero offsets */}
         <div className="relative mx-auto w-full max-w-[520px]">
           <img
             src={ticketImage}
@@ -112,26 +110,34 @@ function TicketSection() {
             className="w-full"
           />
 
-          <div className="absolute inset-x-[9%] top-[10%] text-center text-[#6b0f1a]">
-            {/* Scaled up the text 'clamp' sizes to perfectly fit the new massive ticket */}
-            <p className="text-[clamp(0.8rem,3.8vw,1.1rem)] font-semibold italic leading-none">
-              We invite you to the wedding of
-            </p>
+          {/* REVISED CONTAINER: 
+              Using 'justify-center' and a 'gap-y-[10%]' instead of 
+              'justify-between' to pull everything closer together 
+              and center it on the ticket.
+          */}
+          <div className="absolute inset-x-[9%] top-[10%] bottom-[11%] flex flex-col justify-center gap-y-[10%] text-center text-[#6b0f1a]">
+            
+            {/* TOP GROUP: Names and Intro */}
+            {/* REVISED: Reduced top margin from 18% to 12% for better centering */}
+            <div className="mt-[12%]">
+              <p className="text-[clamp(0.8rem,3.8vw,1.1rem)] font-semibold italic leading-none">
+                We invite you to the wedding of
+              </p>
 
-            <h2 className="luxury-script mt-[7%] text-[clamp(4.8rem,18vw,7rem)] leading-[0.82] tracking-[-0.04em] text-[#6b0f1a]">
-              Jay & Tin
-            </h2>
+              <h2 className="luxury-script mt-[7%] text-[clamp(4.8rem,18vw,7rem)] leading-[0.82] tracking-[-0.04em] text-[#6b0f1a]">
+                Jay & Tin
+              </h2>
+            </div>
 
-            <div className="mt-[9%] grid min-h-[112px] grid-cols-2 border-y border-[#7c1725]/75">
+            {/* MIDDLE GROUP: Date and Time */}
+            <div className="grid grid-cols-2 gap-3 min-h-[112px]">
               <div className="flex flex-col items-center justify-center border-r border-[#7c1725]/75 px-2 text-center">
                 <p className="heading-serif m-0 translate-y-[3px] text-[clamp(0.8rem,3.5vw,1rem)] font-bold uppercase leading-none">
                   May
                 </p>
-
-                <p className="heading-serif m-0 -translate-y-[6px] text-[clamp(3.8rem,14vw,5rem)] font-bold leading-[0.78]">
+                <p className="heading-serif m-0 -translate-y-[6px] text-[clamp(3.8rem,14vw,5.5rem)] font-bold leading-[0.78]">
                   29
                 </p>
-
                 <p className="heading-serif m-0 translate-y-[6px] text-[clamp(0.8rem,3.5vw,1rem)] font-bold leading-none tracking-[0.08em]">
                   2026
                 </p>
@@ -142,19 +148,18 @@ function TicketSection() {
                   <p className="m-0 text-[clamp(0.9rem,4vw,1.15rem)] font-semibold italic">
                     at 4:30 in the
                   </p>
-
                   <p className="m-0 text-[clamp(0.9rem,4vw,1.15rem)] font-semibold italic">
                     afternoon
                   </p>
                 </div>
-
                 <p className="heading-serif m-0 mt-3 text-[clamp(0.75rem,3vw,0.95rem)] font-bold uppercase tracking-[0.18em]">
                   Friday
                 </p>
               </div>
             </div>
 
-            <p className="mx-auto mt-[8%] max-w-[280px] text-[clamp(0.95rem,4vw,1.2rem)] font-semibold italic leading-[0.95]">
+            {/* BOTTOM GROUP: Reminder text scaled up */}
+            <p className="mx-auto max-w-[340px] text-[clamp(1rem,4.5vw,1.35rem)] font-semibold italic leading-tight">
               Be in the venue at least 30mins before ceremony.
             </p>
           </div>
