@@ -155,6 +155,89 @@ function TicketSection() {
   )
 }
 
+// --- NEW LIVE COUNTDOWN SECTION ---
+function CountdownSection() {
+  const [timeLeft, setTimeLeft] = useState({
+    days: 0,
+    hours: 0,
+    minutes: 0,
+    seconds: 0,
+  });
+
+  useEffect(() => {
+    // Set target date to May 29, 2026 at 4:30 PM (Philippine Time / GMT+8)
+    const targetDate = new Date('May 29, 2026 16:30:00 GMT+0800').getTime();
+
+    const interval = setInterval(() => {
+      const now = new Date().getTime();
+      const difference = targetDate - now;
+
+      if (difference > 0) {
+        setTimeLeft({
+          days: Math.floor(difference / (1000 * 60 * 60 * 24)),
+          hours: Math.floor((difference % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60)),
+          minutes: Math.floor((difference % (1000 * 60 * 60)) / (1000 * 60)),
+          seconds: Math.floor((difference % (1000 * 60)) / 1000),
+        });
+      } else {
+        clearInterval(interval);
+      }
+    }, 1000);
+
+    return () => clearInterval(interval);
+  }, []);
+
+  return (
+    <SectionShell className="text-center !min-h-[auto] py-16">
+      <div className="mx-auto w-full max-w-[390px]">
+        <p className="script text-[clamp(3rem,12vw,4rem)] leading-none text-[#d9bd7f]">
+          Counting the Days
+        </p>
+        
+        <div className="mt-10 flex justify-center gap-3 text-[#fff7ef]">
+          {/* Days */}
+          <div className="flex w-[72px] flex-col items-center">
+            <span className="heading-serif text-[clamp(2.2rem,8vw,3rem)] leading-none tracking-tight">
+              {timeLeft.days}
+            </span>
+            <span className="mt-3 text-[9px] uppercase tracking-[0.25em] text-[#d9bd7f]">Days</span>
+          </div>
+          
+          <span className="heading-serif text-3xl text-[#d9bd7f]/50 translate-y-1">:</span>
+          
+          {/* Hours */}
+          <div className="flex w-[64px] flex-col items-center">
+            <span className="heading-serif text-[clamp(2.2rem,8vw,3rem)] leading-none tracking-tight">
+              {String(timeLeft.hours).padStart(2, '0')}
+            </span>
+            <span className="mt-3 text-[9px] uppercase tracking-[0.25em] text-[#d9bd7f]">Hrs</span>
+          </div>
+          
+          <span className="heading-serif text-3xl text-[#d9bd7f]/50 translate-y-1">:</span>
+          
+          {/* Minutes */}
+          <div className="flex w-[64px] flex-col items-center">
+            <span className="heading-serif text-[clamp(2.2rem,8vw,3rem)] leading-none tracking-tight">
+              {String(timeLeft.minutes).padStart(2, '0')}
+            </span>
+            <span className="mt-3 text-[9px] uppercase tracking-[0.25em] text-[#d9bd7f]">Mins</span>
+          </div>
+          
+          <span className="heading-serif text-3xl text-[#d9bd7f]/50 translate-y-1">:</span>
+          
+          {/* Seconds */}
+          <div className="flex w-[64px] flex-col items-center">
+            <span className="heading-serif text-[clamp(2.2rem,8vw,3rem)] leading-none tracking-tight">
+              {String(timeLeft.seconds).padStart(2, '0')}
+            </span>
+            <span className="mt-3 text-[9px] uppercase tracking-[0.25em] text-[#d9bd7f]">Secs</span>
+          </div>
+        </div>
+      </div>
+    </SectionShell>
+  );
+}
+
 function CeremonySection() {
   return (
     <section className="chapter-section relative flex min-h-[100svh] items-center justify-center overflow-hidden bg-[#5f0711] px-0 py-12 text-center">
@@ -172,15 +255,15 @@ function CeremonySection() {
           </p>
         </div>
 
-{/* IMAGE */}
-<div className="mt-10 w-full">
-  <img
-    src={lolasCafe}
-    alt="Lola’s Cafe Morato venue"
-    className="w-full object-cover grayscale"
-    loading="lazy"
-  />
-</div>
+        {/* IMAGE */}
+        <div className="mt-10 w-full">
+          <img
+            src={lolasCafe}
+            alt="Lola’s Cafe Morato venue"
+            className="w-full object-cover grayscale"
+            loading="lazy"
+          />
+        </div>
 
         {/* BUTTON (keep centered + padded) */}
         <div className="px-5">
@@ -219,12 +302,15 @@ function DressCodeSection() {
           Strictly Formal
         </p>
 
-<p className="mx-auto mt-10 max-w-[340px] text-[15px] italic leading-[1.7] text-[#fff7ef]/90 text-center">
-  We would love for our guests<br />
-  to join in our wedding palette by wearing<br />
-  <span className="font-semibold not-italic">Black</span> or <span className="font-semibold not-italic">Wine Red</span> attire,<br />
-  helping create a timeless and cohesive celebration.
-</p>
+        <p className="mx-auto max-w-[340px] text-center text-[15px] leading-[1.8] text-[#fff7ef]">
+          We would love for our guests
+          <br />
+          to join in our wedding palette by wearing
+          <br />
+          <span className="font-semibold">Black</span> or <span className="font-semibold">Wine Red</span> attire,
+          <br />
+          helping create a timeless and cohesive celebration.
+        </p>
 
         <p className="script mt-8 text-[clamp(2rem,8vw,3rem)] text-[#d9bd7f]">
           Dress Elegantly!
@@ -248,16 +334,19 @@ function GiftGuideSection() {
   return (
     <SectionShell className="text-center">
       <div className="mx-auto w-full max-w-[390px]">
-        <h3 className="script text-[clamp(4.2rem,16vw,5.8rem)] leading-none text-[#fff7ef]">
+        <h2 className="script text-[clamp(3rem,12vw,4.5rem)] text-[#fff7ef]">
           Gift Guide
-        </h3>
+        </h2>
 
-<p className="mx-auto mt-10 max-w-[340px] text-[15px] italic leading-[1.7] text-[#fff7ef]/90 text-center">
-  With all the blessings that God poured out on us<br />
-  we cannot ask for more. Your presence and<br />
-  prayers are all we request. But if you desire to<br />
-  bless us, monetary gifts are what we suggest.
-</p>
+        <p className="mx-auto mt-6 max-w-[340px] text-center text-[15px] leading-[1.8] text-[#fff7ef]">
+          With all the blessings that God poured out on us
+          <br />
+          we cannot ask for more. Your presence and
+          <br />
+          prayers are all we request. But if you desire to
+          <br />
+          bless us, monetary gifts are what we suggest.
+        </p>
 
         <div className="mx-auto mt-12 inline-block rounded-2xl bg-[#efe2d2] p-5 shadow-[0_40px_85px_rgba(0,0,0,0.42)]">
           <img src={gcashQR} alt="Gift QR code" className="w-[260px] max-w-[72vw]" />
@@ -268,77 +357,201 @@ function GiftGuideSection() {
 }
 
 function DetailsSection() {
+  const observerRefs = useRef([]);
+
+  // --- COUNTDOWN STATE & LOGIC ---
+  const [timeLeft, setTimeLeft] = useState({
+    days: 0,
+    hours: 0,
+    minutes: 0,
+    seconds: 0,
+  });
+
+  useEffect(() => {
+    const targetDate = new Date('May 29, 2026 16:30:00 GMT+0800').getTime();
+
+    const interval = setInterval(() => {
+      const now = new Date().getTime();
+      const difference = targetDate - now;
+
+      if (difference > 0) {
+        setTimeLeft({
+          days: Math.floor(difference / (1000 * 60 * 60 * 24)),
+          hours: Math.floor((difference % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60)),
+          minutes: Math.floor((difference % (1000 * 60 * 60)) / (1000 * 60)),
+          seconds: Math.floor((difference % (1000 * 60)) / 1000),
+        });
+      } else {
+        clearInterval(interval);
+      }
+    }, 1000);
+
+    return () => clearInterval(interval);
+  }, []);
+
+  // --- SCROLL ANIMATION LOGIC ---
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add("opacity-100", "translate-y-0");
+            entry.target.classList.remove("opacity-0", "translate-y-12");
+          }
+        });
+      },
+      { threshold: 0.15 }
+    );
+
+    observerRefs.current.forEach((ref) => {
+      if (ref) observer.observe(ref);
+    });
+
+    return () => observer.disconnect();
+  }, []);
+
+  const addToRefs = (el) => {
+    if (el && !observerRefs.current.includes(el)) {
+      observerRefs.current.push(el);
+    }
+  };
+
   return (
     <section className="chapter-section relative flex min-h-[100svh] items-center justify-center overflow-hidden bg-[#5f0711] px-0 py-0 text-center">
       <div className="chapter-content relative h-[100svh] w-full overflow-hidden bg-[#5f0711]">
+        
+        {/* THE PAPER BACKGROUND */}
         <img
           src={detailsPaper}
           alt=""
-          aria-hidden="true"
-          className="absolute inset-0 z-10 h-full w-full object-cover object-center"
+          className="h-full w-full object-cover"
         />
 
-        <div className="absolute inset-x-[7%] top-[10%] z-20 text-[#6b0f1a]">
-          <h3 className="heading-serif text-[clamp(2.7rem,11vw,3.85rem)] uppercase tracking-[-0.05em]">
-            Details
-          </h3>
+        {/* SCROLLABLE OVERLAY */}
+        <div className="absolute inset-x-[7%] top-[5%] z-20 max-h-[85vh] overflow-y-auto text-[#6b0f1a] [scrollbar-width:none] [-ms-overflow-style:none] [&::-webkit-scrollbar]:hidden">
+          
+          <div 
+            ref={addToRefs} 
+            className="mb-16 pt-10 text-left opacity-0 translate-y-12 transition-all duration-1000 ease-out"
+          >
+            <p className="script text-[clamp(4.5rem,15vw,7rem)] leading-[0.75]">
+              Wedding
+            </p>
+            <p className="script ml-[15%] text-[clamp(4.5rem,15vw,7rem)] leading-[0.75]">
+              Details
+            </p>
+          </div>
 
-          <div className="mt-[13%] space-y-[8%] text-left">
-            <div className="max-w-[64%]">
-              <h4 className="heading-serif text-[clamp(1rem,4vw,1.25rem)] font-bold uppercase leading-[0.95] tracking-[0.04em]">
-                Can I bring a plus one?
-              </h4>
-              <p className="mt-2 text-[clamp(0.76rem,3vw,0.92rem)] italic leading-[1.05]">
-                Due to limited space at our venue, we can only accommodate those
-                formally invited on the invitation.
-              </p>
-            </div>
+          {/* ALL TEXT AND COUNTDOWN FLOWING TOGETHER */}
+          {/* pb-[35vh] ensures the user can scroll the countdown high enough to be seen */}
+          <div className="pb-[35vh] text-left">
+            
+            <div className="space-y-[15%]">
+              
+              <div ref={addToRefs} className="max-w-[90%] opacity-0 translate-y-12 transition-all duration-1000 ease-out">
+                <h4 className="heading-serif text-[clamp(1.2rem,6vw,1.6rem)] font-bold uppercase leading-[0.95] tracking-[0.04em]">
+                  Can I bring a plus one?
+                </h4>
+                <p className="mt-4 text-[clamp(1.05rem,5.5vw,1.3rem)] italic leading-[1.15]">
+                  Due to limited space at our venue, we can only accommodate those formally invited on the invitation.
+                </p>
+              </div>
 
-            <div className="ml-auto max-w-[64%] text-right">
-              <h4 className="heading-serif text-[clamp(1rem,4vw,1.25rem)] font-bold uppercase leading-[0.95] tracking-[0.04em]">
-                Are kids allowed?
-              </h4>
-              <p className="mt-2 text-[clamp(0.76rem,3vw,0.92rem)] italic leading-[1.05]">
-                We love your little ones. However, due to the limited space at
-                our venue, we decided to keep our wedding adults only. We
-                encourage you to use this as a date night to get out and have
-                fun!
-              </p>
-            </div>
+              <div ref={addToRefs} className="ml-auto max-w-[90%] text-right opacity-0 translate-y-12 transition-all duration-1000 ease-out">
+                <h4 className="heading-serif text-[clamp(1.2rem,6vw,1.6rem)] font-bold uppercase leading-[0.95] tracking-[0.04em]">
+                  Are kids allowed?
+                </h4>
+                <p className="mt-4 text-[clamp(1.05rem,5.5vw,1.3rem)] italic leading-[1.15]">
+                  We love your little ones. However, due to the limited space at our venue, we decided to keep our wedding adults only. We encourage you to use this as a date night to get out and have fun!
+                </p>
+              </div>
 
-            <div className="max-w-[64%]">
-              <h4 className="heading-serif text-[clamp(1rem,4vw,1.25rem)] font-bold uppercase leading-[0.95] tracking-[0.04em]">
-                Unplugged Ceremony
-              </h4>
-              <p className="mt-2 text-[clamp(0.76rem,3vw,0.92rem)] italic leading-[1.05]">
-                As we say “I Do,” we ask our beloved guests to put away their
-                phones and cameras, and be fully present in the meaningful
-                moment with us. While our I Do’s are unplugged, our reception is
-                not.
-              </p>
-            </div>
+              <div ref={addToRefs} className="max-w-[90%] opacity-0 translate-y-12 transition-all duration-1000 ease-out">
+                <h4 className="heading-serif text-[clamp(1.2rem,6vw,1.6rem)] font-bold uppercase leading-[0.95] tracking-[0.04em]">
+                  Unplugged ceremony
+                </h4>
+                <p className="mt-4 text-[clamp(1.05rem,5.5vw,1.3rem)] italic leading-[1.15]">
+                  As we say “I Do”, we ask our beloved guests to put away their phones and cameras, and be fully present in the meaningful moment with us.
+                </p>
+                <p className="mt-4 text-[clamp(1.05rem,5.5vw,1.3rem)] italic leading-[1.15]">
+                  While our I Do’s are unplugged, our reception is not.
+                </p>
+              </div>
 
-            <div className="ml-auto max-w-[64%] text-right">
-              <h4 className="heading-serif text-[clamp(1rem,4vw,1.25rem)] font-bold uppercase leading-[0.95] tracking-[0.04em]">
-                Parking
-              </h4>
-              <p className="mt-2 text-[clamp(0.76rem,3vw,0.92rem)] italic leading-[1.05]">
-                To make your arrival easy, a pay parking building is located
-                right beside Lola’s Cafe.
-              </p>
+              <div ref={addToRefs} className="ml-auto max-w-[90%] text-right opacity-0 translate-y-12 transition-all duration-1000 ease-out">
+                <h4 className="heading-serif text-[clamp(1.2rem,6vw,1.6rem)] font-bold uppercase leading-[0.95] tracking-[0.04em]">
+                  Parking
+                </h4>
+                <p className="mt-4 text-[clamp(1.05rem,5.5vw,1.3rem)] italic leading-[1.15]">
+                  To make your arrival easy, a pay parking building is located right beside Lola’s Cafe.
+                </p>
+              </div>
+
+              {/* --- EMBEDDED COUNTDOWN (Flows right after Parking) --- */}
+              <div 
+                ref={addToRefs} 
+                className="pt-6 text-center opacity-0 translate-y-12 transition-all duration-1000 ease-out"
+              >
+                <p className="script text-[clamp(3.2rem,12vw,4.5rem)] leading-none text-[#d9bd7f]">
+                  Counting the Days
+                </p>
+                
+                <div className="mt-6 flex justify-center gap-2 text-[#6b0f1a]">
+                  {/* Days */}
+                  <div className="flex w-[60px] flex-col items-center">
+                    <span className="heading-serif text-[clamp(2.2rem,8.5vw,3rem)] leading-none tracking-tight">
+                      {timeLeft.days}
+                    </span>
+                    <span className="mt-2 text-[8px] font-bold uppercase tracking-[0.25em] text-[#d9bd7f]">Days</span>
+                  </div>
+                  
+                  <span className="heading-serif text-2xl text-[#d9bd7f]/70 translate-y-1">:</span>
+                  
+                  {/* Hours */}
+                  <div className="flex w-[55px] flex-col items-center">
+                    <span className="heading-serif text-[clamp(2.2rem,8.5vw,3rem)] leading-none tracking-tight">
+                      {String(timeLeft.hours).padStart(2, '0')}
+                    </span>
+                    <span className="mt-2 text-[8px] font-bold uppercase tracking-[0.25em] text-[#d9bd7f]">Hrs</span>
+                  </div>
+                  
+                  <span className="heading-serif text-2xl text-[#d9bd7f]/70 translate-y-1">:</span>
+                  
+                  {/* Minutes */}
+                  <div className="flex w-[55px] flex-col items-center">
+                    <span className="heading-serif text-[clamp(2.2rem,8.5vw,3rem)] leading-none tracking-tight">
+                      {String(timeLeft.minutes).padStart(2, '0')}
+                    </span>
+                    <span className="mt-2 text-[8px] font-bold uppercase tracking-[0.25em] text-[#d9bd7f]">Mins</span>
+                  </div>
+                  
+                  <span className="heading-serif text-2xl text-[#d9bd7f]/70 translate-y-1">:</span>
+                  
+                  {/* Seconds */}
+                  <div className="flex w-[55px] flex-col items-center">
+                    <span className="heading-serif text-[clamp(2.2rem,8.5vw,3rem)] leading-none tracking-tight">
+                      {String(timeLeft.seconds).padStart(2, '0')}
+                    </span>
+                    <span className="mt-2 text-[8px] font-bold uppercase tracking-[0.25em] text-[#d9bd7f]">Secs</span>
+                  </div>
+                </div>
+              </div>
+              {/* End Countdown */}
+
             </div>
           </div>
         </div>
 
-        <div className="absolute bottom-[6%] left-1/2 z-20 -translate-x-1/2">
-          <p className="text-[9px] uppercase tracking-[0.45em] text-[#d9bd7f]/70">
+        {/* STATIC BOTTOM RSVP BAR */}
+        <div className="pointer-events-none absolute bottom-[4%] left-1/2 z-30 -translate-x-1/2 bg-white/0">
+          <p className="text-[9px] uppercase tracking-[0.45em] text-[#6b0f1a]/50">
             RSVP
           </p>
-          <div className="mx-auto mt-3 h-9 w-px bg-gradient-to-b from-[#d9bd7f]/70 to-transparent" />
+          <div className="mx-auto mt-2 h-6 w-px bg-gradient-to-b from-[#6b0f1a]/50 to-transparent" />
         </div>
       </div>
     </section>
-  )
+  );
 }
 
 function RSVPSection() {
@@ -381,42 +594,42 @@ function RSVPSection() {
       return
     }
 
-setStatus({ loading: true, success: '', error: '' })
+    setStatus({ loading: true, success: '', error: '' })
 
-try {
-  const payload = new FormData()
-  payload.append('fullName', form.fullName.trim())
-  payload.append('email', form.email.trim())
-  payload.append('attendance', form.attendance)
-  payload.append('message', form.message.trim())
+    try {
+      const payload = new FormData()
+      payload.append('fullName', form.fullName.trim())
+      payload.append('email', form.email.trim())
+      payload.append('attendance', form.attendance)
+      payload.append('message', form.message.trim())
 
-  await fetch(GOOGLE_SCRIPT_URL, {
-    method: 'POST',
-    mode: 'no-cors',
-    body: payload,
-  })
+      await fetch(GOOGLE_SCRIPT_URL, {
+        method: 'POST',
+        mode: 'no-cors',
+        body: payload,
+      })
 
-  setForm({
-    fullName: '',
-    email: '',
-    attendance: 'Attending',
-    message: '',
-  })
+      setForm({
+        fullName: '',
+        email: '',
+        attendance: 'Attending',
+        message: '',
+      })
 
-  setStatus({
-    loading: false,
-    success: 'Thank you. Your RSVP has been beautifully received.',
-    error: '',
-  })
-} catch (error) {
-  console.error('RSVP submit error:', error)
+      setStatus({
+        loading: false,
+        success: 'Thank you. Your RSVP has been beautifully received.',
+        error: '',
+      })
+    } catch (error) {
+      console.error('RSVP submit error:', error)
 
-  setStatus({
-    loading: false,
-    success: '',
-    error: 'Something went wrong. Please try submitting again.',
-  })
-}
+      setStatus({
+        loading: false,
+        success: '',
+        error: 'Something went wrong. Please try submitting again.',
+      })
+    }
   }
 
   return (
@@ -511,22 +724,25 @@ function App() {
       gsap.utils.toArray('.chapter-section').forEach((section) => {
         const content = section.querySelector('.chapter-content')
 
-        gsap.fromTo(
-          content,
-          { opacity: 0, y: 48, scale: 0.985 },
-          {
-            opacity: 1,
-            y: 0,
-            scale: 1,
-            duration: 1.2,
-            ease: 'power3.out',
-            scrollTrigger: {
-              trigger: section,
-              start: 'top 72%',
-              once: true,
+        // Safety check in case a section doesn't use the chapter-content wrapper
+        if (content) {
+          gsap.fromTo(
+            content,
+            { opacity: 0, y: 48, scale: 0.985 },
+            {
+              opacity: 1,
+              y: 0,
+              scale: 1,
+              duration: 1.2,
+              ease: 'power3.out',
+              scrollTrigger: {
+                trigger: section,
+                start: 'top 72%',
+                once: true,
+              },
             },
-          },
-        )
+          )
+        }
       })
 
       gsap.utils.toArray('.torn-divider').forEach((divider, index) => {
@@ -603,6 +819,9 @@ function App() {
         <HeroSection />
 
         <TicketSection />
+        
+        {/* ADDED COUNTDOWN SECTION HERE */}
+        <CountdownSection />
 
         <CeremonySection />
 
