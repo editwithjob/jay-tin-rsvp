@@ -155,9 +155,9 @@ function TicketSection() {
 
             {/* BOTTOM GROUP: Reminder text */}
             <p className="mx-auto max-w-[340px] text-[clamp(0.85rem,3.6vw,1.1rem)] font-light italic leading-tight">
-              Be in the venue 
+              Be in the venue at least
               <br />
-              at least 30 minutes before ceremony.
+              30 minutes before the ceremony.
             </p>
           </div>
         </div>
@@ -213,7 +213,7 @@ function CeremonySection() {
           </p>
 
           <p className="mt-6 text-[11px] font-semibold uppercase tracking-[0.34em] text-[#fff7ef]">
-            Lola’s Cafe, Tomas Morato
+            Lola Cafe, Tomas Morato
           </p>
         </div>
       </div>
@@ -270,7 +270,7 @@ function DressCodeSection() {
         <p className="mx-auto max-w-[340px] text-center text-[15px] leading-[1.8] text-[#fff7ef]">
           We would love for our guests
           <br />
-          to join in our wedding palette by wearing
+          to join our wedding palette by wearing
           <br />
           <span className="font-semibold">Black</span> or <span className="font-semibold">Wine Red</span> attire,
           <br />
@@ -308,13 +308,13 @@ function GiftGuideSection() {
         <p className="mx-auto mt-6 max-w-[340px] text-center text-[15px] leading-[1.8] text-[#fff7ef]">
           With all the blessings that God poured out
           <br />
-          on us we cannot ask for more.
+          on us we could not ask for more.
           <br />
           Your presence and prayers are all we request.
           <br />
-          But if you desire to bless us,
+          However, if you wish to bless us,
           <br />
-          monetary gifts are what we suggest.
+          we kindly suggest monetary gifts.
         </p>
 
         <div className="mx-auto mt-12 inline-block rounded-2xl bg-[#efe2d2] p-5 shadow-[0_40px_85px_rgba(0,0,0,0.42)]">
@@ -431,7 +431,9 @@ function DetailsSection() {
                   Are kids allowed?
                 </h4>
                 <p className="mt-4 text-[clamp(1.05rem,5.5vw,1.3rem)] italic leading-[1.15]">
-                  We love your little ones. However, due to the limited space at our venue, we decided to keep our wedding adults only. We encourage you to use this as a date night to get out and have fun!
+                  
+                  We love your little ones. However, due to limited space at our venue, we have decided to keep our wedding adults-only.
+                  We encourage you to take this as an opportunity for a fun date night!
                 </p>
               </div>
 
@@ -440,10 +442,10 @@ function DetailsSection() {
                   Unplugged ceremony
                 </h4>
                 <p className="mt-4 text-[clamp(1.05rem,5.5vw,1.3rem)] italic leading-[1.15]">
-                  As we say “I Do”, we ask our beloved guests to put away their phones and cameras, and be fully present in the meaningful moment with us.
+                  As we say “I do,” we kindly ask our beloved guests to put away their phones and cameras and be fully present in this meaningful moment with us.
                 </p>
                 <p className="mt-4 text-[clamp(1.05rem,5.5vw,1.3rem)] italic leading-[1.15]">
-                  While our I Do’s are unplugged, our reception is not.
+                  While our “I do’s” are unplugged, our reception is not.
                 </p>
               </div>
 
@@ -452,7 +454,7 @@ function DetailsSection() {
                   Parking
                 </h4>
                 <p className="mt-4 text-[clamp(1.05rem,5.5vw,1.3rem)] italic leading-[1.15]">
-                  To make your arrival easy, a pay parking building is located right beside Lola’s Cafe.
+                  To make your arrival easier, a paid parking building is located right beside Lola’s Café.
                 </p>
               </div>
 
