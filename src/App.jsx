@@ -155,7 +155,6 @@ function TicketSection() {
   )
 }
 
-// --- NEW LIVE COUNTDOWN SECTION ---
 function CountdownSection() {
   const [timeLeft, setTimeLeft] = useState({
     days: 0,
@@ -165,7 +164,6 @@ function CountdownSection() {
   });
 
   useEffect(() => {
-    // Set target date to May 29, 2026 at 4:30 PM (Philippine Time / GMT+8)
     const targetDate = new Date('May 29, 2026 16:30:00 GMT+0800').getTime();
 
     const interval = setInterval(() => {
@@ -187,55 +185,7 @@ function CountdownSection() {
     return () => clearInterval(interval);
   }, []);
 
-  return (
-    <SectionShell className="text-center !min-h-[auto] py-16">
-      <div className="mx-auto w-full max-w-[390px]">
-        <p className="script text-[clamp(3rem,12vw,4rem)] leading-none text-[#d9bd7f]">
-          Counting the Days
-        </p>
-        
-        <div className="mt-10 flex justify-center gap-3 text-[#fff7ef]">
-          {/* Days */}
-          <div className="flex w-[72px] flex-col items-center">
-            <span className="heading-serif text-[clamp(2.2rem,8vw,3rem)] leading-none tracking-tight">
-              {timeLeft.days}
-            </span>
-            <span className="mt-3 text-[9px] uppercase tracking-[0.25em] text-[#d9bd7f]">Days</span>
-          </div>
-          
-          <span className="heading-serif text-3xl text-[#d9bd7f]/50 translate-y-1">:</span>
-          
-          {/* Hours */}
-          <div className="flex w-[64px] flex-col items-center">
-            <span className="heading-serif text-[clamp(2.2rem,8vw,3rem)] leading-none tracking-tight">
-              {String(timeLeft.hours).padStart(2, '0')}
-            </span>
-            <span className="mt-3 text-[9px] uppercase tracking-[0.25em] text-[#d9bd7f]">Hrs</span>
-          </div>
-          
-          <span className="heading-serif text-3xl text-[#d9bd7f]/50 translate-y-1">:</span>
-          
-          {/* Minutes */}
-          <div className="flex w-[64px] flex-col items-center">
-            <span className="heading-serif text-[clamp(2.2rem,8vw,3rem)] leading-none tracking-tight">
-              {String(timeLeft.minutes).padStart(2, '0')}
-            </span>
-            <span className="mt-3 text-[9px] uppercase tracking-[0.25em] text-[#d9bd7f]">Mins</span>
-          </div>
-          
-          <span className="heading-serif text-3xl text-[#d9bd7f]/50 translate-y-1">:</span>
-          
-          {/* Seconds */}
-          <div className="flex w-[64px] flex-col items-center">
-            <span className="heading-serif text-[clamp(2.2rem,8vw,3rem)] leading-none tracking-tight">
-              {String(timeLeft.seconds).padStart(2, '0')}
-            </span>
-            <span className="mt-3 text-[9px] uppercase tracking-[0.25em] text-[#d9bd7f]">Secs</span>
-          </div>
-        </div>
-      </div>
-    </SectionShell>
-  );
+  return null;
 }
 
 function CeremonySection() {
@@ -244,7 +194,6 @@ function CeremonySection() {
       
       <div className="chapter-content relative w-full max-w-[520px]">
 
-        {/* TITLE (has padding like DETAILS text top) */}
         <div className="px-5">
           <p className="script mx-auto text-[clamp(2.25rem,8.5vw,3.4rem)] leading-[0.88] text-[#fff7ef]">
             Wedding Ceremony &<br /> Reception Venue
@@ -255,7 +204,6 @@ function CeremonySection() {
           </p>
         </div>
 
-        {/* IMAGE */}
         <div className="mt-10 w-full">
           <img
             src={lolasCafe}
@@ -265,7 +213,6 @@ function CeremonySection() {
           />
         </div>
 
-        {/* BUTTON (keep centered + padded) */}
         <div className="px-5">
           <a
             href={GOOGLE_MAPS_LINK}
@@ -359,7 +306,6 @@ function GiftGuideSection() {
 function DetailsSection() {
   const observerRefs = useRef([]);
 
-  // --- COUNTDOWN STATE & LOGIC ---
   const [timeLeft, setTimeLeft] = useState({
     days: 0,
     hours: 0,
@@ -389,7 +335,6 @@ function DetailsSection() {
     return () => clearInterval(interval);
   }, []);
 
-  // --- SCROLL ANIMATION LOGIC ---
   useEffect(() => {
     const observer = new IntersectionObserver(
       (entries) => {
@@ -421,14 +366,22 @@ function DetailsSection() {
       <div className="chapter-content relative h-[100svh] w-full overflow-hidden bg-[#5f0711]">
         
         {/* THE PAPER BACKGROUND */}
+        {/* REVISED: Uses object-fill and slight horizontal width stretch to push red out of sides, 
+            while keeping vertical height EXACTLY 100% so the top and bottom torn edges remain fully visible */}
         <img
           src={detailsPaper}
           alt=""
-          className="h-full w-full object-cover"
+          className="absolute left-1/2 top-0 h-full w-[112%] max-w-none -translate-x-1/2 object-fill"
         />
 
         {/* SCROLLABLE OVERLAY */}
-        <div className="absolute inset-x-[7%] top-[5%] z-20 max-h-[85vh] overflow-y-auto text-[#6b0f1a] [scrollbar-width:none] [-ms-overflow-style:none] [&::-webkit-scrollbar]:hidden">
+        <div 
+          className="absolute inset-x-[7%] top-[8%] z-20 max-h-[82vh] overflow-y-auto text-[#6b0f1a] [scrollbar-width:none] [-ms-overflow-style:none] [&::-webkit-scrollbar]:hidden"
+          style={{
+            WebkitMaskImage: 'linear-gradient(to bottom, transparent 0%, black 8%, black 92%, transparent 100%)',
+            maskImage: 'linear-gradient(to bottom, transparent 0%, black 8%, black 92%, transparent 100%)'
+          }}
+        >
           
           <div 
             ref={addToRefs} 
@@ -442,8 +395,6 @@ function DetailsSection() {
             </p>
           </div>
 
-          {/* ALL TEXT AND COUNTDOWN FLOWING TOGETHER */}
-          {/* pb-[35vh] ensures the user can scroll the countdown high enough to be seen */}
           <div className="pb-[35vh] text-left">
             
             <div className="space-y-[15%]">
@@ -487,7 +438,6 @@ function DetailsSection() {
                 </p>
               </div>
 
-              {/* --- EMBEDDED COUNTDOWN (Flows right after Parking) --- */}
               <div 
                 ref={addToRefs} 
                 className="pt-6 text-center opacity-0 translate-y-12 transition-all duration-1000 ease-out"
@@ -497,7 +447,6 @@ function DetailsSection() {
                 </p>
                 
                 <div className="mt-6 flex justify-center gap-2 text-[#6b0f1a]">
-                  {/* Days */}
                   <div className="flex w-[60px] flex-col items-center">
                     <span className="heading-serif text-[clamp(2.2rem,8.5vw,3rem)] leading-none tracking-tight">
                       {timeLeft.days}
@@ -507,7 +456,6 @@ function DetailsSection() {
                   
                   <span className="heading-serif text-2xl text-[#d9bd7f]/70 translate-y-1">:</span>
                   
-                  {/* Hours */}
                   <div className="flex w-[55px] flex-col items-center">
                     <span className="heading-serif text-[clamp(2.2rem,8.5vw,3rem)] leading-none tracking-tight">
                       {String(timeLeft.hours).padStart(2, '0')}
@@ -517,7 +465,6 @@ function DetailsSection() {
                   
                   <span className="heading-serif text-2xl text-[#d9bd7f]/70 translate-y-1">:</span>
                   
-                  {/* Minutes */}
                   <div className="flex w-[55px] flex-col items-center">
                     <span className="heading-serif text-[clamp(2.2rem,8.5vw,3rem)] leading-none tracking-tight">
                       {String(timeLeft.minutes).padStart(2, '0')}
@@ -527,7 +474,6 @@ function DetailsSection() {
                   
                   <span className="heading-serif text-2xl text-[#d9bd7f]/70 translate-y-1">:</span>
                   
-                  {/* Seconds */}
                   <div className="flex w-[55px] flex-col items-center">
                     <span className="heading-serif text-[clamp(2.2rem,8.5vw,3rem)] leading-none tracking-tight">
                       {String(timeLeft.seconds).padStart(2, '0')}
@@ -536,7 +482,6 @@ function DetailsSection() {
                   </div>
                 </div>
               </div>
-              {/* End Countdown */}
 
             </div>
           </div>
@@ -724,7 +669,6 @@ function App() {
       gsap.utils.toArray('.chapter-section').forEach((section) => {
         const content = section.querySelector('.chapter-content')
 
-        // Safety check in case a section doesn't use the chapter-content wrapper
         if (content) {
           gsap.fromTo(
             content,
@@ -820,7 +764,6 @@ function App() {
 
         <TicketSection />
         
-        {/* ADDED COUNTDOWN SECTION HERE */}
         <CountdownSection />
 
         <CeremonySection />
