@@ -15,7 +15,7 @@ import burgundyFabric from './assets/fabric/burgundy-fabric.jpg'
 import blackFabric from './assets/fabric/black-fabric.jpg'
 import deepRedFabric from './assets/fabric/deep-red-fabric.jpg'
 
-import lolasCafe from './assets/invite/lolas-cafe.png'
+import lolasCafe from './assets/invite/lolas-cafe2.png'
 
 gsap.registerPlugin(ScrollTrigger)
 
@@ -29,10 +29,13 @@ const tornVariants = {
   rough: tornRough,
 }
 
-function SectionShell({ children, className = '' }) {
+// 1. REVISED: Removed the forced min-h-[100svh] and adjusted padding 
+// to naturally lessen the margin/gap between standard sections
+function SectionShell({ children, className = '', id = '' }) {
   return (
     <section
-      className={`chapter-section relative flex min-h-[100svh] items-center justify-center overflow-hidden px-5 py-12 ${className}`}
+      id={id}
+      className={`chapter-section relative flex items-center justify-center overflow-hidden px-5 py-24 ${className}`}
     >
       <div className="chapter-content relative z-10 w-full">{children}</div>
     </section>
@@ -57,7 +60,7 @@ function TornDivider({ variant = 'soft', flip = false, wide = false }) {
 
 function ScrollCue({ label = 'Scroll' }) {
   return (
-    <div className="mt-8 text-center">
+    <div className="scroll-cue mt-8 text-center opacity-0">
       <p className="text-[9px] uppercase tracking-[0.42em] text-[#d9bd7f]/75">
         {label}
       </p>
@@ -68,14 +71,16 @@ function ScrollCue({ label = 'Scroll' }) {
 
 function HeroSection() {
   return (
-    <SectionShell className="text-center">
+    // Added explicit min-h-[100svh] here to keep the hero section full screen
+    <SectionShell id="hero-section" className="min-h-[100svh] text-center">
       <div className="mx-auto flex min-h-[88svh] w-full max-w-[440px] flex-col justify-center">
-        <h1 className="mx-auto max-w-[390px] font-['Times_New_Roman'] text-[clamp(2.15rem,8vw,3.35rem)] font-normal uppercase leading-[0.96] tracking-[-0.06em] text-[#fff7ef]">
+        
+        <h1 className="hero-text mx-auto max-w-[390px] font-['Times_New_Roman'] text-[clamp(2.15rem,8vw,3.35rem)] font-normal uppercase leading-[0.96] tracking-[-0.06em] text-[#fff7ef] opacity-0">
           <span className="block whitespace-nowrap">Some things are</span>
           <span className="block whitespace-nowrap">meant for you</span>
         </h1>
 
-        <p className="script mt-7 text-[clamp(2rem,8vw,3rem)] leading-none text-[#fff7ef]">
+        <p className="hero-text script mt-7 text-[clamp(2rem,8vw,3rem)] leading-none text-[#fff7ef] opacity-0">
           And only you.
         </p>
 
@@ -83,7 +88,7 @@ function HeroSection() {
           <img
             src={heroEnvelope}
             alt="Burgundy envelope with wax seal"
-            className="hero-envelope w-[118vw] max-w-[610px] translate-x-[-8px]"
+            className="hero-envelope w-[118vw] max-w-[610px] translate-x-[-8px] opacity-0"
           />
         </div>
 
@@ -95,9 +100,12 @@ function HeroSection() {
 
 function TicketSection() {
   return (
-    <section className="chapter-section relative flex min-h-[100svh] items-center justify-center overflow-hidden px-0 py-0 text-center">
-      <div className="chapter-content relative z-10 flex min-h-[100svh] w-full items-center justify-center">
-        <div className="relative left-1 mx-auto w-[94vw] max-w-[395px]">
+    // Pushed right up under the hero section, no horizontal padding
+    <section className="chapter-section relative flex items-center justify-center overflow-hidden px-0 pb-20 pt-8 text-center">
+      <div className="chapter-content relative z-10 flex w-full items-center justify-center">
+        
+        {/* MAXIMUM SIZE: Full width of the container (up to 520px), zero margins, zero offsets */}
+        <div className="relative mx-auto w-full max-w-[520px]">
           <img
             src={ticketImage}
             alt="Jay and Tin wedding invitation ticket"
@@ -105,47 +113,48 @@ function TicketSection() {
           />
 
           <div className="absolute inset-x-[9%] top-[10%] text-center text-[#6b0f1a]">
-            <p className="text-[clamp(0.72rem,3vw,0.9rem)] font-semibold italic leading-none">
+            {/* Scaled up the text 'clamp' sizes to perfectly fit the new massive ticket */}
+            <p className="text-[clamp(0.8rem,3.8vw,1.1rem)] font-semibold italic leading-none">
               We invite you to the wedding of
             </p>
 
-            <h2 className="luxury-script mt-[7%] text-[clamp(4rem,15vw,5.3rem)] leading-[0.82] tracking-[-0.04em] text-[#6b0f1a]">
+            <h2 className="luxury-script mt-[7%] text-[clamp(4.8rem,18vw,7rem)] leading-[0.82] tracking-[-0.04em] text-[#6b0f1a]">
               Jay & Tin
             </h2>
 
             <div className="mt-[9%] grid min-h-[112px] grid-cols-2 border-y border-[#7c1725]/75">
               <div className="flex flex-col items-center justify-center border-r border-[#7c1725]/75 px-2 text-center">
-                <p className="heading-serif m-0 translate-y-[3px] text-[clamp(0.68rem,2.6vw,0.82rem)] font-bold uppercase leading-none">
+                <p className="heading-serif m-0 translate-y-[3px] text-[clamp(0.8rem,3.5vw,1rem)] font-bold uppercase leading-none">
                   May
                 </p>
 
-                <p className="heading-serif m-0 -translate-y-[6px] text-[clamp(3rem,11vw,3.6rem)] font-bold leading-[0.78]">
+                <p className="heading-serif m-0 -translate-y-[6px] text-[clamp(3.8rem,14vw,5rem)] font-bold leading-[0.78]">
                   29
                 </p>
 
-                <p className="heading-serif m-0 translate-y-[6px] text-[clamp(0.68rem,2.6vw,0.82rem)] font-bold leading-none tracking-[0.08em]">
+                <p className="heading-serif m-0 translate-y-[6px] text-[clamp(0.8rem,3.5vw,1rem)] font-bold leading-none tracking-[0.08em]">
                   2026
                 </p>
               </div>
 
               <div className="flex flex-col items-center justify-center px-3 text-center">
                 <div className="leading-[0.95]">
-                  <p className="m-0 text-[clamp(0.76rem,2.9vw,0.9rem)] font-semibold italic">
+                  <p className="m-0 text-[clamp(0.9rem,4vw,1.15rem)] font-semibold italic">
                     at 4:30 in the
                   </p>
 
-                  <p className="m-0 text-[clamp(0.76rem,2.9vw,0.9rem)] font-semibold italic">
+                  <p className="m-0 text-[clamp(0.9rem,4vw,1.15rem)] font-semibold italic">
                     afternoon
                   </p>
                 </div>
 
-                <p className="heading-serif m-0 mt-3 text-[clamp(0.62rem,2.35vw,0.78rem)] font-bold uppercase tracking-[0.18em]">
+                <p className="heading-serif m-0 mt-3 text-[clamp(0.75rem,3vw,0.95rem)] font-bold uppercase tracking-[0.18em]">
                   Friday
                 </p>
               </div>
             </div>
 
-            <p className="mx-auto mt-[8%] max-w-[250px] text-[clamp(0.82rem,3.25vw,0.98rem)] font-semibold italic leading-[0.95]">
+            <p className="mx-auto mt-[8%] max-w-[280px] text-[clamp(0.95rem,4vw,1.2rem)] font-semibold italic leading-[0.95]">
               Be in the venue at least 30mins before ceremony.
             </p>
           </div>
@@ -190,10 +199,11 @@ function CountdownSection() {
 
 function CeremonySection() {
   return (
-    <section className="chapter-section relative flex min-h-[100svh] items-center justify-center overflow-hidden bg-[#5f0711] px-0 py-12 text-center">
+    // Add flex-col to stack the top text block, full-width image, and bottom button block
+    <section className="chapter-section relative flex flex-col items-center justify-center overflow-hidden bg-[#5f0711] px-0 py-24 text-center">
       
+      {/* WIDTH-LIMITED TOP CONTENT BLOCK */}
       <div className="chapter-content relative w-full max-w-[520px]">
-
         <div className="px-5">
           <p className="script mx-auto text-[clamp(2.25rem,8.5vw,3.4rem)] leading-[0.88] text-[#fff7ef]">
             Wedding Ceremony &<br /> Reception Venue
@@ -203,16 +213,21 @@ function CeremonySection() {
             Lola’s Cafe, Tomas Morato
           </p>
         </div>
+      </div>
 
-        <div className="mt-10 w-full">
-          <img
-            src={lolasCafe}
-            alt="Lola’s Cafe Morato venue"
-            className="w-full object-cover grayscale"
-            loading="lazy"
-          />
-        </div>
+      {/* FULL-WIDTH IMAGE CONTAINER (Moved outside of width-limited div) */}
+      <div className="mt-10 w-full overflow-hidden">
+        <img
+          src={lolasCafe}
+          alt="Lola’s Cafe Morato venue"
+          // Keep object-cover for full-section-width image
+          className="w-full object-cover grayscale"
+          loading="lazy"
+        />
+      </div>
 
+      {/* WIDTH-LIMITED BOTTOM CONTENT BLOCK */}
+      <div className="chapter-content relative w-full max-w-[520px]">
         <div className="px-5">
           <a
             href={GOOGLE_MAPS_LINK}
@@ -223,8 +238,8 @@ function CeremonySection() {
             View Map
           </a>
         </div>
-
       </div>
+
     </section>
   )
 }
@@ -256,7 +271,9 @@ function DressCodeSection() {
           <br />
           <span className="font-semibold">Black</span> or <span className="font-semibold">Wine Red</span> attire,
           <br />
-          helping create a timeless and cohesive celebration.
+          helping create a timeless 
+          <br />
+          and cohesive celebration.
         </p>
 
         <p className="script mt-8 text-[clamp(2rem,8vw,3rem)] text-[#d9bd7f]">
@@ -286,13 +303,15 @@ function GiftGuideSection() {
         </h2>
 
         <p className="mx-auto mt-6 max-w-[340px] text-center text-[15px] leading-[1.8] text-[#fff7ef]">
-          With all the blessings that God poured out on us
+          With all the blessings that God poured out
           <br />
-          we cannot ask for more. Your presence and
+          on us we cannot ask for more.
           <br />
-          prayers are all we request. But if you desire to
+          Your presence and prayers are all we request.
           <br />
-          bless us, monetary gifts are what we suggest.
+          But if you desire to bless us,
+          <br />
+          monetary gifts are what we suggest.
         </p>
 
         <div className="mx-auto mt-12 inline-block rounded-2xl bg-[#efe2d2] p-5 shadow-[0_40px_85px_rgba(0,0,0,0.42)]">
@@ -340,8 +359,8 @@ function DetailsSection() {
       (entries) => {
         entries.forEach((entry) => {
           if (entry.isIntersecting) {
-            entry.target.classList.add("opacity-100", "translate-y-0");
-            entry.target.classList.remove("opacity-0", "translate-y-12");
+            entry.target.classList.add("opacity-100");
+            entry.target.classList.remove("opacity-0");
           }
         });
       },
@@ -362,19 +381,16 @@ function DetailsSection() {
   };
 
   return (
+    // Maintained min-h-[100svh] here 
     <section className="chapter-section relative flex min-h-[100svh] items-center justify-center overflow-hidden bg-[#5f0711] px-0 py-0 text-center">
       <div className="chapter-content relative h-[100svh] w-full overflow-hidden bg-[#5f0711]">
         
-        {/* THE PAPER BACKGROUND */}
-        {/* REVISED: Uses object-fill and slight horizontal width stretch to push red out of sides, 
-            while keeping vertical height EXACTLY 100% so the top and bottom torn edges remain fully visible */}
         <img
           src={detailsPaper}
           alt=""
           className="absolute left-1/2 top-0 h-full w-[112%] max-w-none -translate-x-1/2 object-fill"
         />
 
-        {/* SCROLLABLE OVERLAY */}
         <div 
           className="absolute inset-x-[7%] top-[8%] z-20 max-h-[82vh] overflow-y-auto text-[#6b0f1a] [scrollbar-width:none] [-ms-overflow-style:none] [&::-webkit-scrollbar]:hidden"
           style={{
@@ -385,7 +401,7 @@ function DetailsSection() {
           
           <div 
             ref={addToRefs} 
-            className="mb-16 pt-10 text-left opacity-0 translate-y-12 transition-all duration-1000 ease-out"
+            className="mb-16 pt-10 text-left opacity-0 transition-opacity duration-1000 ease-out"
           >
             <p className="script text-[clamp(4.5rem,15vw,7rem)] leading-[0.75]">
               Wedding
@@ -399,7 +415,7 @@ function DetailsSection() {
             
             <div className="space-y-[15%]">
               
-              <div ref={addToRefs} className="max-w-[90%] opacity-0 translate-y-12 transition-all duration-1000 ease-out">
+              <div ref={addToRefs} className="max-w-[90%] opacity-0 transition-opacity duration-1000 ease-out">
                 <h4 className="heading-serif text-[clamp(1.2rem,6vw,1.6rem)] font-bold uppercase leading-[0.95] tracking-[0.04em]">
                   Can I bring a plus one?
                 </h4>
@@ -408,7 +424,7 @@ function DetailsSection() {
                 </p>
               </div>
 
-              <div ref={addToRefs} className="ml-auto max-w-[90%] text-right opacity-0 translate-y-12 transition-all duration-1000 ease-out">
+              <div ref={addToRefs} className="ml-auto max-w-[90%] text-right opacity-0 transition-opacity duration-1000 ease-out">
                 <h4 className="heading-serif text-[clamp(1.2rem,6vw,1.6rem)] font-bold uppercase leading-[0.95] tracking-[0.04em]">
                   Are kids allowed?
                 </h4>
@@ -417,7 +433,7 @@ function DetailsSection() {
                 </p>
               </div>
 
-              <div ref={addToRefs} className="max-w-[90%] opacity-0 translate-y-12 transition-all duration-1000 ease-out">
+              <div ref={addToRefs} className="max-w-[90%] opacity-0 transition-opacity duration-1000 ease-out">
                 <h4 className="heading-serif text-[clamp(1.2rem,6vw,1.6rem)] font-bold uppercase leading-[0.95] tracking-[0.04em]">
                   Unplugged ceremony
                 </h4>
@@ -429,7 +445,7 @@ function DetailsSection() {
                 </p>
               </div>
 
-              <div ref={addToRefs} className="ml-auto max-w-[90%] text-right opacity-0 translate-y-12 transition-all duration-1000 ease-out">
+              <div ref={addToRefs} className="ml-auto max-w-[90%] text-right opacity-0 transition-opacity duration-1000 ease-out">
                 <h4 className="heading-serif text-[clamp(1.2rem,6vw,1.6rem)] font-bold uppercase leading-[0.95] tracking-[0.04em]">
                   Parking
                 </h4>
@@ -440,7 +456,7 @@ function DetailsSection() {
 
               <div 
                 ref={addToRefs} 
-                className="pt-6 text-center opacity-0 translate-y-12 transition-all duration-1000 ease-out"
+                className="pt-6 text-center opacity-0 transition-opacity duration-1000 ease-out"
               >
                 <p className="script text-[clamp(3.2rem,12vw,4.5rem)] leading-none text-[#d9bd7f]">
                   Counting the Days
@@ -487,7 +503,6 @@ function DetailsSection() {
           </div>
         </div>
 
-        {/* STATIC BOTTOM RSVP BAR */}
         <div className="pointer-events-none absolute bottom-[4%] left-1/2 z-30 -translate-x-1/2 bg-white/0">
           <p className="text-[9px] uppercase tracking-[0.45em] text-[#6b0f1a]/50">
             RSVP
@@ -578,7 +593,8 @@ function RSVPSection() {
   }
 
   return (
-    <SectionShell className="text-center">
+    // Maintained min-h-[100svh] here 
+    <SectionShell className="min-h-[100svh] text-center">
       <div className="mx-auto w-full max-w-[390px]">
         <p className="script mx-auto max-w-[360px] text-[clamp(3.15rem,11.5vw,4.35rem)] leading-[0.88] text-[#fff7ef]">
           RSVP Here!
@@ -666,19 +682,37 @@ function App() {
     if (reduceMotion) return
 
     const ctx = gsap.context(() => {
-      gsap.utils.toArray('.chapter-section').forEach((section) => {
+      const tl = gsap.timeline();
+
+      tl.to('.hero-text', {
+        opacity: 1,
+        duration: 1,
+        ease: 'power2.out',
+        stagger: 0.2 
+      })
+      .to('.hero-envelope', {
+        opacity: 1,
+        duration: 3,
+        ease: 'power2.out'
+      }, '-=0.5')
+      .to('.scroll-cue', {
+        opacity: 1,
+        duration: 1
+      });
+
+      gsap.utils.toArray('.chapter-section').forEach((section, index) => {
+        if (section.id === 'hero-section') return;
+
         const content = section.querySelector('.chapter-content')
 
         if (content) {
           gsap.fromTo(
             content,
-            { opacity: 0, y: 48, scale: 0.985 },
+            { opacity: 0 },
             {
               opacity: 1,
-              y: 0,
-              scale: 1,
               duration: 1.2,
-              ease: 'power3.out',
+              ease: 'power2.out',
               scrollTrigger: {
                 trigger: section,
                 start: 'top 72%',
@@ -694,13 +728,11 @@ function App() {
 
         gsap.fromTo(
           paper,
-          { opacity: 0, y: 32, scale: 1.04 },
+          { opacity: 0 },
           {
             opacity: 0.95,
-            y: 0,
-            scale: 1,
             duration: 1,
-            ease: 'power3.out',
+            ease: 'power2.out',
             scrollTrigger: {
               trigger: divider,
               start: 'top 85%',
@@ -721,31 +753,6 @@ function App() {
           },
         })
       })
-
-      gsap.to('.hero-envelope', {
-        opacity: 1,
-        y: -28,
-        ease: 'none',
-        scrollTrigger: {
-          trigger: '.hero-envelope',
-          start: 'top 65%',
-          end: 'bottom top',
-          scrub: true,
-        },
-      })
-
-      gsap.fromTo(
-        '.hero-envelope',
-        { opacity: 0, y: 50, scale: 0.96 },
-        {
-          opacity: 1,
-          y: 0,
-          scale: 1,
-          duration: 1.8,
-          delay: 0.45,
-          ease: 'power3.out',
-        },
-      )
 
       ScrollTrigger.refresh()
       window.addEventListener('load', ScrollTrigger.refresh)
@@ -780,4 +787,4 @@ function App() {
   )
 }
 
-export default App  
+export default App
