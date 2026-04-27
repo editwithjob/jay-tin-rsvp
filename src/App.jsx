@@ -433,7 +433,7 @@ function DetailsSection() {
               </div>
 
               {/* Question 3 */}
-              <div ref={addToRefs} className="max-w-[85%] opacity-0 transition-opacity duration-1000 ease-out">
+              <div ref={addToRefs} className="max-w-[92%] opacity-0 transition-opacity duration-1000 ease-out">
                 <h4 className="heading-serif text-[clamp(1.2rem,6vw,1.6rem)] font-bold uppercase leading-[0.95] tracking-[0.04em]">
                   Unplugged ceremony
                 </h4>
@@ -441,7 +441,7 @@ function DetailsSection() {
                   As we say “I do,” we kindly ask our beloved guests to put away their phones and cameras and be fully present in this meaningful moment with us.
                 </p>
                 <p className="mt-4 text-[clamp(1rem,4.8vw,1.25rem)] italic leading-[1.15]">
-                  While our “I do’s” are unplugged, our reception is not.
+                  While our “I do’s” are unplugged, our reception is&nbsp;not.
                 </p>
               </div>
 
