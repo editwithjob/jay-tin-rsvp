@@ -384,10 +384,8 @@ function DetailsSection() {
   };
 
   return (
-    // REVISED: Removed min-h-[100svh] and added standard padding so it flows naturally
     <section className="chapter-section relative flex flex-col items-center justify-center overflow-hidden bg-[#5f0711] px-0 py-12 text-center">
       
-      {/* REVISED: Removed fixed height, letting the content dictate the height */}
       <div className="chapter-content relative w-full overflow-hidden bg-[#5f0711]">
         
         {/* Background paper stretches naturally to fill the dynamic height */}
@@ -397,72 +395,72 @@ function DetailsSection() {
           className="absolute left-1/2 top-0 h-full w-[112%] max-w-none -translate-x-1/2 object-fill"
         />
 
-        {/* REVISED: Removed absolute positioning, internal overflow, and mask image */}
         <div className="relative z-20 w-full px-[9%] py-24 text-[#6b0f1a]">
           
           <div 
             ref={addToRefs} 
             className="mb-16 pt-4 text-center opacity-0 transition-opacity duration-1000 ease-out"
           >
-            <p className="script text-[clamp(4.5rem,15vw,7rem)] leading-[0.75]">
+            <p className="script text-[clamp(4.5rem,15vw,7rem)] leading-[0.75] font-bold">
               Wedding
             </p>
-            <p className="script text-[clamp(4.5rem,15vw,7rem)] leading-[0.75]">
+            <p className="script text-[clamp(4.5rem,15vw,7rem)] leading-[0.75] font-bold">
               Details
             </p>
           </div>
 
           <div className="pb-12 text-left">
-            
-            {/* REVISED: Changed percentage spacing to fixed rem spacing (space-y-12) so gaps don't stretch artificially */}
             <div className="space-y-12">
               
-              <div ref={addToRefs} className="max-w-[90%] opacity-0 transition-opacity duration-1000 ease-out">
+              {/* Question 1 */}
+              <div ref={addToRefs} className="max-w-[85%] opacity-0 transition-opacity duration-1000 ease-out">
                 <h4 className="heading-serif text-[clamp(1.2rem,6vw,1.6rem)] font-bold uppercase leading-[0.95] tracking-[0.04em]">
                   Can I bring a plus one?
                 </h4>
-                <p className="mt-4 text-[clamp(1.05rem,5.5vw,1.3rem)] italic leading-[1.15]">
+                <p className="mt-4 text-[clamp(1rem,4.8vw,1.25rem)] italic leading-[1.15]">
                   Due to limited space at our venue, we can only accommodate those formally invited on the invitation.
                 </p>
               </div>
 
-              <div ref={addToRefs} className="ml-auto max-w-[90%] text-right opacity-0 transition-opacity duration-1000 ease-out">
+              {/* Question 2 */}
+              <div ref={addToRefs} className="ml-auto max-w-[85%] text-right opacity-0 transition-opacity duration-1000 ease-out">
                 <h4 className="heading-serif text-[clamp(1.2rem,6vw,1.6rem)] font-bold uppercase leading-[0.95] tracking-[0.04em]">
                   Are kids allowed?
                 </h4>
-                <p className="mt-4 text-[clamp(1.05rem,5.5vw,1.3rem)] italic leading-[1.15]">
-                  
-                  We love your little ones. However, due to limited space at our venue, we have decided to keep our wedding adults-only.
-                  We encourage you to take this as an opportunity for a fun date night!
+                <p className="mt-4 text-[clamp(1rem,4.8vw,1.25rem)] italic leading-[1.15]">
+                  We love your little ones. However, due to limited space at our venue, we have decided to keep our wedding adults-only. We encourage you to take this as an opportunity for a fun date night!
                 </p>
               </div>
 
-              <div ref={addToRefs} className="max-w-[90%] opacity-0 transition-opacity duration-1000 ease-out">
+              {/* Question 3 */}
+              <div ref={addToRefs} className="max-w-[85%] opacity-0 transition-opacity duration-1000 ease-out">
                 <h4 className="heading-serif text-[clamp(1.2rem,6vw,1.6rem)] font-bold uppercase leading-[0.95] tracking-[0.04em]">
                   Unplugged ceremony
                 </h4>
-                <p className="mt-4 text-[clamp(1.05rem,5.5vw,1.3rem)] italic leading-[1.15]">
+                <p className="mt-4 text-[clamp(1rem,4.8vw,1.25rem)] italic leading-[1.15]">
                   As we say “I do,” we kindly ask our beloved guests to put away their phones and cameras and be fully present in this meaningful moment with us.
                 </p>
-                <p className="mt-4 text-[clamp(1.05rem,5.5vw,1.3rem)] italic leading-[1.15]">
+                <p className="mt-4 text-[clamp(1rem,4.8vw,1.25rem)] italic leading-[1.15]">
                   While our “I do’s” are unplugged, our reception is not.
                 </p>
               </div>
 
-              <div ref={addToRefs} className="ml-auto max-w-[90%] text-right opacity-0 transition-opacity duration-1000 ease-out">
+              {/* Question 4 */}
+              <div ref={addToRefs} className="ml-auto max-w-[85%] text-right opacity-0 transition-opacity duration-1000 ease-out">
                 <h4 className="heading-serif text-[clamp(1.2rem,6vw,1.6rem)] font-bold uppercase leading-[0.95] tracking-[0.04em]">
                   Parking
                 </h4>
-                <p className="mt-4 text-[clamp(1.05rem,5.5vw,1.3rem)] italic leading-[1.15]">
-                  To make your arrival easier, a paid parking building is located right beside Lola’s Café.
+                <p className="mt-4 text-[clamp(1rem,4.8vw,1.25rem)] italic leading-[1.15]">
+                  To make your arrival easier, a paid parking building is located right beside Lola Café.
                 </p>
               </div>
 
+              {/* Countdown Section: Optimized spacing and positioning */}
               <div 
                 ref={addToRefs} 
-                className="pt-10 text-center opacity-0 transition-opacity duration-1000 ease-out"
+                className="pt-6 pb-4 text-center opacity-0 transition-opacity duration-1000 ease-out"
               >
-                <p className="script text-[clamp(3.2rem,12vw,4.5rem)] leading-none text-[#6b0f1a]">
+                <p className="script text-[clamp(3.2rem,12vw,4.5rem)] leading-none text-[#6b0f1a] font-bold">
                   Counting the Days
                 </p>
                 
@@ -511,7 +509,6 @@ function DetailsSection() {
     </section>
   );
 }
-
 function RSVPSection() {
   const [form, setForm] = useState({
     fullName: '',
