@@ -15,6 +15,8 @@ import burgundyFabric from './assets/fabric/burgundy-fabric.jpg'
 import blackFabric from './assets/fabric/black-fabric.jpg'
 import deepRedFabric from './assets/fabric/deep-red-fabric.jpg'
 
+import lolasCafe from './assets/invite/lolas-cafe.png'
+
 gsap.registerPlugin(ScrollTrigger)
 
 const GOOGLE_MAPS_LINK = 'https://maps.app.goo.gl/zfppua56pNU7nuwG6?g_st=ic'
@@ -44,7 +46,7 @@ function TornDivider({ variant = 'soft', flip = false, wide = false }) {
         src={tornVariants[variant]}
         alt=""
         aria-hidden="true"
-        className={`torn-paper-img opacity-95 drop-shadow-[0_20px_35px_rgba(0,0,0,0.22)] ${
+        className={`torn-paper-img opacity-95 ${
           wide ? 'w-[155%] max-w-[860px]' : 'w-[138%] max-w-[740px]'
         } ${flip ? 'rotate-180' : ''}`}
         loading="lazy"
@@ -68,10 +70,9 @@ function HeroSection() {
   return (
     <SectionShell className="text-center">
       <div className="mx-auto flex min-h-[88svh] w-full max-w-[440px] flex-col justify-center">
-        <h1 className="font-['Times_New_Roman'] text-[clamp(2.7rem,10vw,4rem)] font-normal uppercase leading-[0.98] tracking-[-0.06em] text-[#fff7ef]">
-          Some things are
-          <br />
-          meant for you
+        <h1 className="mx-auto max-w-[390px] font-['Times_New_Roman'] text-[clamp(2.15rem,8vw,3.35rem)] font-normal uppercase leading-[0.96] tracking-[-0.06em] text-[#fff7ef]">
+          <span className="block whitespace-nowrap">Some things are</span>
+          <span className="block whitespace-nowrap">meant for you</span>
         </h1>
 
         <p className="script mt-7 text-[clamp(2rem,8vw,3rem)] leading-none text-[#fff7ef]">
@@ -113,24 +114,20 @@ function TicketSection() {
             </h2>
 
             <div className="mt-[9%] grid min-h-[112px] grid-cols-2 border-y border-[#7c1725]/75">
-{/* LEFT DATE */}
-<div className="flex flex-col items-center justify-center border-r border-[#7c1725]/75 px-2 text-center">
+              <div className="flex flex-col items-center justify-center border-r border-[#7c1725]/75 px-2 text-center">
+                <p className="heading-serif m-0 translate-y-[3px] text-[clamp(0.68rem,2.6vw,0.82rem)] font-bold uppercase leading-none">
+                  May
+                </p>
 
-  <p className="heading-serif m-0 translate-y-[3px] text-[clamp(0.68rem,2.6vw,0.82rem)] font-bold uppercase leading-none">
-    May
-  </p>
+                <p className="heading-serif m-0 -translate-y-[6px] text-[clamp(3rem,11vw,3.6rem)] font-bold leading-[0.78]">
+                  29
+                </p>
 
-<p className="heading-serif m-0 -translate-y-[6px] text-[clamp(3rem,11vw,3.6rem)] font-bold leading-[0.78]">
-  29
-</p>
+                <p className="heading-serif m-0 translate-y-[6px] text-[clamp(0.68rem,2.6vw,0.82rem)] font-bold leading-none tracking-[0.08em]">
+                  2026
+                </p>
+              </div>
 
-  <p className="heading-serif m-0 translate-y-[6px] text-[clamp(0.68rem,2.6vw,0.82rem)] font-bold leading-none tracking-[0.08em]">
-    2026
-  </p>
-
-</div>
-
-              {/* RIGHT DETAILS */}
               <div className="flex flex-col items-center justify-center px-3 text-center">
                 <div className="leading-[0.95]">
                   <p className="m-0 text-[clamp(0.76rem,2.9vw,0.9rem)] font-semibold italic">
@@ -160,42 +157,51 @@ function TicketSection() {
 
 function CeremonySection() {
   return (
-    <SectionShell className="text-center">
-      <div className="mx-auto w-full max-w-[410px]">
-        <p className="script text-[clamp(2.6rem,10vw,4rem)] leading-[0.86] text-[#fff7ef]">
-          Wedding Ceremony &<br /> Reception Venue
-        </p>
+    <section className="chapter-section relative flex min-h-[100svh] items-center justify-center overflow-hidden bg-[#5f0711] px-0 py-12 text-center">
+      
+      <div className="chapter-content relative w-full max-w-[520px]">
 
-        <p className="mt-6 text-[11px] font-semibold uppercase tracking-[0.34em] text-[#fff7ef]">
-          Lola’s Cafe, Morato
-        </p>
+        {/* TITLE (has padding like DETAILS text top) */}
+        <div className="px-5">
+          <p className="script mx-auto text-[clamp(2.25rem,8.5vw,3.4rem)] leading-[0.88] text-[#fff7ef]">
+            Wedding Ceremony &<br /> Reception Venue
+          </p>
 
-        <div className="mx-auto mt-10 w-full max-w-[370px] overflow-hidden border border-[#e8d7c3]/45 shadow-[0_40px_90px_rgba(0,0,0,0.42)]">
-          <iframe
-            title="Lola’s Cafe Morato Map"
-            src="https://www.google.com/maps?q=Lola%E2%80%99s%20Cafe%2C%2099%20Scout%20Lozano%20St%2C%20Diliman%2C%20Quezon%20City&output=embed"
-            className="h-[52svh] max-h-[430px] min-h-[330px] w-full grayscale"
-            loading="lazy"
-            referrerPolicy="no-referrer-when-downgrade"
-          />
+          <p className="mt-6 text-[11px] font-semibold uppercase tracking-[0.34em] text-[#fff7ef]">
+            Lola’s Cafe, Tomas Morato
+          </p>
         </div>
 
-        <a
-          href={GOOGLE_MAPS_LINK}
-          target="_blank"
-          rel="noopener noreferrer"
-          className="mt-8 inline-block border border-[#fff7ef]/80 px-10 py-3 text-[10px] uppercase tracking-[0.28em] text-[#fff7ef] transition hover:bg-[#fff7ef] hover:text-[#6b0f1a]"
-        >
-          View Map
-        </a>
+{/* IMAGE */}
+<div className="mt-10 w-full">
+  <img
+    src={lolasCafe}
+    alt="Lola’s Cafe Morato venue"
+    className="w-full object-cover grayscale"
+    loading="lazy"
+  />
+</div>
+
+        {/* BUTTON (keep centered + padded) */}
+        <div className="px-5">
+          <a
+            href={GOOGLE_MAPS_LINK}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="mt-8 inline-block border border-[#fff7ef]/80 px-10 py-3 text-[10px] uppercase tracking-[0.28em] text-[#fff7ef] transition hover:bg-[#fff7ef] hover:text-[#6b0f1a]"
+          >
+            View Map
+          </a>
+        </div>
+
       </div>
-    </SectionShell>
+    </section>
   )
 }
 
 function FabricSwatch({ image, label }) {
   return (
-    <div className="swatch h-[88px] w-[88px] overflow-hidden rounded-full border border-[#d9bd7f]/55 shadow-[0_22px_45px_rgba(0,0,0,0.4)]">
+    <div className="swatch h-[88px] w-[88px] overflow-hidden rounded-full border border-[#d9bd7f]/55 ">
       <img src={image} alt={label} className="h-full w-full object-cover" loading="lazy" />
     </div>
   )
@@ -232,7 +238,6 @@ function DressCodeSection() {
         <p className="mt-8 text-[10px] uppercase tracking-[0.34em] text-[#d9bd7f]">
           Burgundy · Black · Deep Red
         </p>
-
       </div>
     </SectionShell>
   )
@@ -414,7 +419,7 @@ function RSVPSection() {
   return (
     <SectionShell className="text-center">
       <div className="mx-auto w-full max-w-[390px]">
-        <p className="script text-[clamp(4rem,15vw,5.4rem)] leading-none text-[#fff7ef]">
+        <p className="script mx-auto max-w-[360px] text-[clamp(3.15rem,11.5vw,4.35rem)] leading-[0.88] text-[#fff7ef]">
           RSVP Here!
         </p>
 
@@ -591,9 +596,7 @@ function App() {
 
   return (
     <main ref={appRef} className="min-h-screen bg-[#5f0711]">
-      <div className="relative mx-auto max-w-[520px] overflow-hidden bg-[#5f0711] shadow-[0_0_90px_rgba(0,0,0,0.38)]">
-        <div className="pointer-events-none fixed inset-0 z-0 bg-[radial-gradient(circle_at_50%_18%,rgba(255,238,203,0.07),transparent_28%),radial-gradient(circle_at_50%_82%,rgba(0,0,0,0.2),transparent_35%)]" />
-
+      <div className="relative mx-auto max-w-[520px] overflow-hidden bg-[#5f0711]">
         <HeroSection />
 
         <TicketSection />
