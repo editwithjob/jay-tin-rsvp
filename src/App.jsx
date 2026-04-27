@@ -381,27 +381,25 @@ function DetailsSection() {
   };
 
   return (
-    <section className="chapter-section relative flex min-h-[100svh] items-center justify-center overflow-hidden bg-[#5f0711] px-0 py-0 text-center">
-      <div className="chapter-content relative h-[100svh] w-full overflow-hidden bg-[#5f0711]">
+    // REVISED: Removed min-h-[100svh] and added standard padding so it flows naturally
+    <section className="chapter-section relative flex flex-col items-center justify-center overflow-hidden bg-[#5f0711] px-0 py-12 text-center">
+      
+      {/* REVISED: Removed fixed height, letting the content dictate the height */}
+      <div className="chapter-content relative w-full overflow-hidden bg-[#5f0711]">
         
+        {/* Background paper stretches naturally to fill the dynamic height */}
         <img
           src={detailsPaper}
           alt=""
           className="absolute left-1/2 top-0 h-full w-[112%] max-w-none -translate-x-1/2 object-fill"
         />
 
-        <div 
-          className="absolute inset-x-[7%] top-[8%] z-20 max-h-[82vh] overflow-y-auto text-[#6b0f1a] [scrollbar-width:none] [-ms-overflow-style:none] [&::-webkit-scrollbar]:hidden"
-          style={{
-            WebkitMaskImage: 'linear-gradient(to bottom, transparent 0%, black 8%, black 92%, transparent 100%)',
-            maskImage: 'linear-gradient(to bottom, transparent 0%, black 8%, black 92%, transparent 100%)'
-          }}
-        >
+        {/* REVISED: Removed absolute positioning, internal overflow, and mask image */}
+        <div className="relative z-20 w-full px-[9%] py-24 text-[#6b0f1a]">
           
-          {/* FIXED: Changed to text-center and removed ml-[15%] from the second paragraph */}
           <div 
             ref={addToRefs} 
-            className="mb-16 pt-10 text-center opacity-0 transition-opacity duration-1000 ease-out"
+            className="mb-16 pt-4 text-center opacity-0 transition-opacity duration-1000 ease-out"
           >
             <p className="script text-[clamp(4.5rem,15vw,7rem)] leading-[0.75]">
               Wedding
@@ -411,9 +409,10 @@ function DetailsSection() {
             </p>
           </div>
 
-          <div className="pb-[35vh] text-left">
+          <div className="pb-12 text-left">
             
-            <div className="space-y-[15%]">
+            {/* REVISED: Changed percentage spacing to fixed rem spacing (space-y-12) so gaps don't stretch artificially */}
+            <div className="space-y-12">
               
               <div ref={addToRefs} className="max-w-[90%] opacity-0 transition-opacity duration-1000 ease-out">
                 <h4 className="heading-serif text-[clamp(1.2rem,6vw,1.6rem)] font-bold uppercase leading-[0.95] tracking-[0.04em]">
@@ -456,7 +455,7 @@ function DetailsSection() {
 
               <div 
                 ref={addToRefs} 
-                className="pt-6 text-center opacity-0 transition-opacity duration-1000 ease-out"
+                className="pt-10 text-center opacity-0 transition-opacity duration-1000 ease-out"
               >
                 <p className="script text-[clamp(3.2rem,12vw,4.5rem)] leading-none text-[#6b0f1a]">
                   Counting the Days
