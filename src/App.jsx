@@ -155,7 +155,9 @@ function TicketSection() {
 
             {/* BOTTOM GROUP: Reminder text */}
             <p className="mx-auto max-w-[340px] text-[clamp(1rem,4.5vw,1.35rem)] font-light italic leading-tight">
-              Be in the venue at least 30mins before ceremony.
+              Be in the venue 
+              <br />
+              at least 30mins before ceremony.
             </p>
           </div>
         </div>
