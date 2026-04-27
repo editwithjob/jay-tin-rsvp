@@ -381,7 +381,6 @@ function DetailsSection() {
   };
 
   return (
-    // Maintained min-h-[100svh] here 
     <section className="chapter-section relative flex min-h-[100svh] items-center justify-center overflow-hidden bg-[#5f0711] px-0 py-0 text-center">
       <div className="chapter-content relative h-[100svh] w-full overflow-hidden bg-[#5f0711]">
         
@@ -399,14 +398,15 @@ function DetailsSection() {
           }}
         >
           
+          {/* FIXED: Changed to text-center and removed ml-[15%] from the second paragraph */}
           <div 
             ref={addToRefs} 
-            className="mb-16 pt-10 text-left opacity-0 transition-opacity duration-1000 ease-out"
+            className="mb-16 pt-10 text-center opacity-0 transition-opacity duration-1000 ease-out"
           >
             <p className="script text-[clamp(4.5rem,15vw,7rem)] leading-[0.75]">
               Wedding
             </p>
-            <p className="script ml-[15%] text-[clamp(4.5rem,15vw,7rem)] leading-[0.75]">
+            <p className="script text-[clamp(4.5rem,15vw,7rem)] leading-[0.75]">
               Details
             </p>
           </div>
@@ -502,6 +502,7 @@ function DetailsSection() {
             </div>
           </div>
         </div>
+
       </div>
     </section>
   );
