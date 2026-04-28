@@ -573,7 +573,7 @@ function RSVPSection() {
 
       setStatus({
         loading: false,
-        success: 'Thank you. Your RSVP has been beautifully received.',
+        success: 'Thank you for your response. We look forward to celebrating with you.',
         error: '',
       })
     } catch (error) {
